@@ -41,11 +41,11 @@ function renderIndex() {
   // Tagline
   if (el('hero-tagline')) el('hero-tagline').textContent = R.tagline;
 
-  // Availability badge
+  /*// Availability badge
   if (el('avail-badge')) {
     el('avail-badge').innerHTML = `<span class="avail-dot"></span> ${R.availability.label} — ${R.availability.location}`;
     el('avail-badge').style.display = R.availability.open ? 'inline-flex' : 'none';
-  }
+  }*/
 
   // Stats
   const statsEl = el('hero-stats');
@@ -343,7 +343,7 @@ function renderContact() {
         <div><div class="cc-label">Location</div><div class="cc-value">${R.contact.location}</div><div class="cc-note">${R.contact.locationNote}</div></div>
       </div>`;
   }
-
+/*
   // Availability widget
   const availEl = el('avail-widget-rows');
   if (availEl) {
@@ -354,7 +354,7 @@ function renderContact() {
       <div class="aw-row"><span class="aw-label">Location</span><span class="aw-value">${av.location}</span></div>
       <div class="aw-row"><span class="aw-label">Work Type</span><span class="aw-value">${av.workType}</span></div>
       <div class="aw-row"><span class="aw-label">Focus Areas</span><span class="aw-value">${av.focusAreas}</span></div>`;
-  }
+  }*/
 }
 
 /* ══════════════════════════════════════════
