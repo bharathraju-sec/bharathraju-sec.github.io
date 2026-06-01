@@ -289,6 +289,15 @@ const RESUME = {
     },
   ],
 
+  languages: [
+  { lang: "English",  level: "Professional", pct: 95  },
+  { lang: "Hindi",    level: "Fluent",       pct: 90  },
+  { lang: "Kannada",  level: "Native",       pct: 100 },
+  { lang: "Tamil",    level: "Fluent",       pct: 85  },
+  { lang: "Telugu",   level: "Fluent",       pct: 85  },
+], 
+
+
   /* ─────────────────────────────────────
      HERO PANEL SKILLS
      (shown on the right panel of index.html)
@@ -302,6 +311,7 @@ const RESUME = {
   ],
 
 };
+
 
 // Make available globally
 if (typeof module !== 'undefined') module.exports = RESUME;
