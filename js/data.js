@@ -50,7 +50,6 @@ const RESUME = {
     { num: "4",  sup: "+", label: "Yrs Industry Exp." },
     { num: "10", sup: "+", label: "Security Tools"    },
     { num: "3",  sup: "",  label: "Major Projects"    },
-    { num: "5",  sup: "",  label: "Languages"         },
   ],
 
   /* ─────────────────────────────────────
