@@ -367,7 +367,9 @@ function renderSharedData() {
     titleEl.textContent = titleEl.textContent.replace('__NAME__', R.name.display);
   }
 }
-
+/* ══════════════════════════════════════════
+    CERTIFICATES (used on multiple pages)
+══════════════════════════════════════════ */
 function renderCertificates() {
   const certEl = el('certificates-grid');
   if (!certEl) return;
@@ -388,4 +390,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProjects();
   renderSkills();
   renderContact();
+  renderCertificates();
 });
