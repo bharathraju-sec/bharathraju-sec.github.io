@@ -8,16 +8,16 @@ Personal portfolio website. GitHub Pages ready. **One file to update when your r
 
 **All resume content lives in one file:**
 
-```
+```text
 js/data.js
 ```
 
 Open it, edit your details, save. **Every page automatically reflects the changes.**
 
-### Common updates:
+### Common updates
 
 | What changed | Where in data.js |
-|---|---|
+| --- | --- |
 | New job | Add to `experience` array (top = most recent) |
 | New project | Add to `projects` array |
 | New skill / tool | Add to `skills` or `tools` arrays |
@@ -31,7 +31,7 @@ Open it, edit your details, save. **Every page automatically reflects the change
 
 ## 🗂 File Structure
 
-```
+```text
 bharath-portfolio/
 │
 ├── index.html                  ← Home page
@@ -72,9 +72,11 @@ bharath-portfolio/
 The contact form currently shows a success message on submit. To make it actually send emails:
 
 **Option A — Formspree (free, no backend needed):**
+
 1. Sign up at [formspree.io](https://formspree.io)
 2. Create a form, copy your endpoint (e.g. `https://formspree.io/f/xabcdefg`)
 3. In `pages/contact.html`, replace the `form` tag's submit handler in `main.js`:
+
 ```js
 // In js/main.js, replace the form submit handler with:
 const formData = new FormData(form);
