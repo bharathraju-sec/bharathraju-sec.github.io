@@ -81,7 +81,7 @@ button { font-family: inherit; }
 }
 .btn-primary   { background: var(--navy); color: #fff; border: none; }
 .btn-primary:hover { background: var(--navy2); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.btn-accent    { background: var(--accent); color: #fff; border: none; }
+.btn-accent    { background: #000; color: #fff; border: none; }
 .btn-accent:hover { background: #0044cc; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,87,255,0.3); }
 .btn-outline   { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
 .btn-outline:hover { border-color: var(--navy); transform: translateY(-2px); }
@@ -159,8 +159,8 @@ section.bg-navy .section-sub   { color: #2a4070; }
 .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--navy); }
 .nav-logo span { color: var(--accent); }
 .nav-links { display: flex; gap: 2rem; align-items: center; }
-.nav-links a { font-size: 0.78rem; font-weight: 500; color: var(--muted); transition: color 0.2s; letter-spacing: 0.01em; }
-.nav-links a:hover, .nav-links a.active { color: var(--navy); }
+.nav-links a { font-size: 0.78rem; font-weight: 500; color: var(--navy); transition: color 0.2s; letter-spacing: 0.01em; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
 .nav-links a.active { font-weight: 600; }
 .nav-cta { font-size: 0.7rem !important; }
 .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
