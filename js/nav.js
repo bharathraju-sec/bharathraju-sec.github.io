@@ -11,7 +11,7 @@ function buildNav(isHome) {
   return `
 <nav class="nav" id="navbar">
   <div class="nav-inner">
-    <a href="${base}index.html" class="nav-logo">BHARATH<span>.</span>RAJU</a>
+    <a href="${base}index.html" class="nav-logo">BHARATH RAJU<span>.</span>SUBRAMANI</a>
     <ul class="nav-links">
       <li><a href="${base}index.html">Home</a></li>
       <li><a href="${base}pages/about.html">About</a></li>
@@ -39,7 +39,7 @@ function buildFooter() {
   return `
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-logo">BHARATH<span>.</span>RAJU</div>
+    <div class="footer-logo">BHARATH RAJU<span>.</span>SUBRAMANI</div>
     <ul class="footer-links">
       <li><a href="#" data-email data-email-label="Email">Email</a></li>
       <li><a href="#" data-linkedin target="_blank" rel="noopener">LinkedIn</a></li>
