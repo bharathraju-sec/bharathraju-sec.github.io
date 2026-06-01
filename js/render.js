@@ -207,7 +207,7 @@ function renderProjects() {
   // Featured wide card first
   if (featured) {
     html += `
-      <div class="project-card-wide reveal" style="grid-column:span 2;">
+        <div class="project-card-wide reveal" style="grid-column:span 2;display:block;">
         <div>
           <div class="proj-num">${featured.num} · Featured</div>
           <div class="proj-title">${featured.title}</div>
@@ -216,14 +216,7 @@ function renderProjects() {
           <div class="proj-tags" style="margin-top:1rem;">${chipHTML(featured.tags)}</div>
           ${featured.link ? `<a href="${featured.link}" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top:1.2rem;font-size:.68rem;">View on GitHub →</a>` : ''}
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:space-between;">
-          <div class="proj-visual">${featured.icon}</div>
-          <div class="proj-stats">
-            <div><div class="proj-stat-num">ML</div><div class="proj-stat-label">Approach</div></div>
-            <div><div class="proj-stat-num">Real-time</div><div class="proj-stat-label">Prediction</div></div>
-            <div><div class="proj-stat-num">Flask</div><div class="proj-stat-label">Interface</div></div>
-          </div>
-        </div>
+        
       </div>`;
   }
 
@@ -373,6 +366,17 @@ function renderSharedData() {
   if (titleEl && !titleEl.dataset.custom) {
     titleEl.textContent = titleEl.textContent.replace('__NAME__', R.name.display);
   }
+}
+
+function renderCertificates() {
+  const certEl = el('certificates-grid');
+  if (!certEl) return;
+  const R = RESUME;
+  certEl.innerHTML = R.certificates.map((c, i) => `
+    <div class="cert-card reveal ${i % 3 !== 0 ? 'reveal-delay-' + (i % 3) : ''}">
+      <div class="cert-badge">${c.name}</div>
+      <div class="cert-full">${c.full}</div>
+    </div>`).join('');
 }
 
 /* ── Run all renderers ── */

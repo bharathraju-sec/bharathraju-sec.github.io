@@ -36,10 +36,11 @@ const RESUME = {
     phone:    "+61 0415 049 930",
     linkedin: "linkedin.com/in/rajubha",
     linkedinUrl: "https://linkedin.com/in/rajubha",
-    github:   "github.com/",             // ← update with your real GitHub
-    githubUrl: "https://github.com/",
-    location: "Sydney, NSW, Australia",
+    github:   "github.com/bharathraju-sec",
+    githubUrl: "https://github.com/bharathraju-sec",
+    location: "Sydney, NSW",
     locationNote: "Available for on-site, hybrid, or remote roles",
+   
   },
 
   /* ─────────────────────────────────────
@@ -240,17 +241,18 @@ const RESUME = {
     { icon: "💻", name: "VMware",      category: "Virtualisation"   },
     { icon: "🐙", name: "Git",         category: "Version Control"  },
   ],
-
   /* ─────────────────────────────────────
-     LANGUAGES SPOKEN
+     certifications (shown on the right panel of index.html)
   ───────────────────────────────────── */
-  languages: [
-    { lang: "English",  level: "Professional", pct: 95  },
-    { lang: "Hindi",    level: "Fluent",       pct: 90  },
-    { lang: "Kannada",  level: "Native",       pct: 100 },
-    { lang: "Tamil",    level: "Fluent",       pct: 85  },
-    { lang: "Telugu",   level: "Fluent",       pct: 85  },
-  ],
+  certificates: [
+  { name: "CEH", full: "Certified Ethical Hacker" },
+  { name: "CCNA", full: "Cisco Certified Network Associate" },
+  { name: "Python Pro Bootcamp", full: "Python Pro Bootcamp" },
+  { name: "Java", full: "Java Certificate" },
+  { name: "Google Cybersecurity Certificate", full: "Google Cybersecurity Certificate" },
+  { name: "C/C++", full: "C/C++ Certificate" },
+  { name: "Full-Stack Web Development Bootcamp", full: "Full-Stack Web Development Bootcamp" },
+],
 
   /* ─────────────────────────────────────
      EXTRA-CURRICULAR
