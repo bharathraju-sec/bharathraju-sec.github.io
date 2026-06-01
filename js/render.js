@@ -105,14 +105,6 @@ function renderAbout() {
         <a href="mailto:${R.contact.email}" style="color:var(--accent)">${R.contact.email}</a><br>
         ${R.contact.phone}
       </div>
-    </div>
-    <div class="about-card">
-      <div class="ac-icon">🌐</div>
-      <div class="ac-title">Languages Spoken</div>
-      <div class="ac-body">Fluent in ${R.languages.length} languages:</div>
-      <div class="lang-chips" style="display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem;">
-        ${R.languages.map(l => `<span class="chip chip-accent">${l.lang}</span>`).join('')}
-      </div>
     </div>`;
 
   // Education cards
@@ -304,7 +296,6 @@ function renderSkills() {
   if (softEl) {
     softEl.innerHTML =
       skillCategoryHTML('🤝 Professional', R.skills.professional, true) +
-      skillCategoryHTML('🌐 Languages',    R.languages.map(l => ({ name: l.lang, pct: l.pct, level: l.level })), true) +
       skillCategoryHTML('📋 Frameworks',   R.skills.frameworks, true);
   }
 }

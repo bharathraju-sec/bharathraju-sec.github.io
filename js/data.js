@@ -289,13 +289,7 @@ const RESUME = {
     },
   ],
 
-  languages: [
-  { lang: "English",  level: "Professional", pct: 95  },
-  { lang: "Hindi",    level: "Fluent",       pct: 90  },
-  { lang: "Kannada",  level: "Native",       pct: 100 },
-  { lang: "Tamil",    level: "Fluent",       pct: 85  },
-  { lang: "Telugu",   level: "Fluent",       pct: 85  },
-], 
+
 
 
   /* ─────────────────────────────────────
