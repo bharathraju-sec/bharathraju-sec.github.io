@@ -22,7 +22,7 @@ const RESUME = {
 
   tagline: "Network Engineer turned cybersecurity specialist. 4+ years building and securing enterprise infrastructure across India and Australia — now probing its defences. Focused on security operations, threat analysis, and penetration testing.",
 
-  availability: {
+  /*availability: {
     open: false,                          // true = green badge shows
     label: "Available for Internship",
     location: "Sydney, AU",
@@ -30,7 +30,7 @@ const RESUME = {
     workType: "On-site / Hybrid / Remote",
     focusAreas: "Pen Test · SOC · Net Sec",
   },
-
+*/
   contact: {
     email:    "bharathrarazu14396@gmail.com",
     phone:    "+61 0415 049 930",
