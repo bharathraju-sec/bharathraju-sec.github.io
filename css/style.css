@@ -81,7 +81,7 @@ button { font-family: inherit; }
 }
 .btn-primary   { background: var(--navy); color: #fff; border: none; }
 .btn-primary:hover { background: var(--navy2); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.btn-accent    { background: #000; color: #fff; border: none; }
+.btn-accent    { background: var(--accent); color: #fff; border: none; }
 .btn-accent:hover { background: #0044cc; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,87,255,0.3); }
 .btn-outline   { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
 .btn-outline:hover { border-color: var(--navy); transform: translateY(-2px); }
@@ -162,7 +162,7 @@ section.bg-navy .section-sub   { color: #2a4070; }
 .nav-links a { font-size: 0.78rem; font-weight: 500; color: var(--navy); transition: color 0.2s; letter-spacing: 0.01em; }
 .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 .nav-links a.active { font-weight: 600; }
-.nav-cta { font-size: 0.7rem !important; }
+.nav-cta { font-size: 0.7rem !important; color: #000 !important; background: var(--accent) !important; border: none !important; padding: 0.65rem 1.5rem !important; }
 .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s; }
 
