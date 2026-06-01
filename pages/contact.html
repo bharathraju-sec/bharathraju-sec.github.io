@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — __NAME__</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-label">// 05 — Contact</div>
+      <h1>Let's Work<br>Together</h1>
+      <p>Open to cybersecurity internship opportunities in penetration testing, network security, and security operations across Sydney.</p>
+    </div>
+  </div>
+
+  <section class="bg-bg">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Left: cards + availability — filled by render.js -->
+        <div>
+          <div class="section-label">// Reach Out</div>
+          <h2 class="section-title" style="font-size:1.8rem;margin-bottom:.6rem;">Contact Details</h2>
+          <p class="section-sub" style="margin-bottom:2rem;">Prefer email for role inquiries, LinkedIn for professional connection.</p>
+          <div id="contact-cards" class="contact-cards reveal"></div>
+          <div class="avail-widget reveal reveal-delay-1">
+            <div class="aw-title">Availability Status</div>
+            <div id="avail-widget-rows"></div>
+          </div>
+        </div>
+
+        <!-- Right: contact form (static — no data needed) -->
+        <div class="contact-form reveal reveal-delay-1">
+          <div class="form-title">Send a Message</div>
+          <div class="form-sub">Fill out the form and I'll get back to you within 24 hours.</div>
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Your Name *</label>
+                <input class="form-input" type="text" id="name" placeholder="Jane Smith" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company">Company</label>
+                <input class="form-input" type="text" id="company" placeholder="Acme Security">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input class="form-input" type="email" id="email" placeholder="jane@company.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <select class="form-select" id="subject">
+                <option value="">Select a topic...</option>
+                <option value="internship">Internship Opportunity</option>
+                <option value="role">Graduate / Full-time Role</option>
+                <option value="collab">Collaboration</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Message *</label>
+              <textarea class="form-textarea" id="message" placeholder="I'd love to discuss an internship opportunity in our security operations team..." required></textarea>
+            </div>
+            <div class="form-footer">
+              <span class="form-note">* Required fields</span>
+              <button type="submit" class="btn btn-primary">Send Message →</button>
+            </div>
+          </form>
+          <div class="form-success" id="form-success">
+            ✓ Message sent! I'll get back to you within 24 hours.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

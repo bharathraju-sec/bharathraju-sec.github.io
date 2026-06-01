@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — __NAME__</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-label">// 03 — Projects</div>
+      <h1>Academic<br>Projects</h1>
+      <p>Hands-on work spanning machine learning, security tooling, mobile development, and cybersecurity research.</p>
+    </div>
+  </div>
+
+  <!-- Projects grid — filled by render.js -->
+  <section class="bg-bg">
+    <div class="container">
+      <div id="projects-grid" class="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- CTF / Research — filled by render.js -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="section-label">// Security Activities</div>
+      <h2 class="section-title">CTF &amp; Research</h2>
+      <p class="section-sub">Beyond academic projects — applied cybersecurity through hands-on challenges and independent research.</p>
+      <div id="ctf-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;"></div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — __NAME__</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+    .value-card { background: var(--white); border: 1px solid var(--border); padding: 1.8rem; border-radius: var(--radius); text-align: center; transition: all 0.25s; }
+    .value-card:hover { border-color: rgba(0,87,255,0.2); box-shadow: var(--shadow); transform: translateY(-3px); }
+    .value-icon  { font-size: 2rem; margin-bottom: 0.8rem; }
+    .value-title { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+    .value-body  { font-size: 0.76rem; color: var(--muted); line-height: 1.7; }
+    @media (max-width:1024px) { .values-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width:640px)  { .values-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-label">// 01 — About</div>
+      <h1>The Person<br>Behind the Profile</h1>
+      <p>Network engineer, cybersecurity student, problem solver — someone who genuinely enjoys understanding how systems work, and how they break.</p>
+    </div>
+  </div>
+
+  <!-- BIO + CARDS -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm <strong>Bharath Raju Subramani</strong>, a cybersecurity postgraduate student at Macquarie University, Sydney. With over four years of industry experience across broadcast media and enterprise environments in India and Australia, I've built a strong foundation in network infrastructure, enterprise support, and secure system operations.</p>
+          <p>My most recent role as a <strong>Field Network Engineer at ENbridge IT Services</strong> in Sydney gave me hands-on exposure to real enterprise infrastructure deployments — installing, configuring, and troubleshooting network devices across client and vendor environments, coordinating ISP activations, and working alongside remote engineering teams.</p>
+          <p>Before that, three years as a <strong>Network Engineer at VNews24 Kannada</strong> in Bengaluru built my core technical instincts: routers, switches, firewalls, load balancers, network security measures, performance monitoring, and documentation.</p>
+          <p>I'm now channelling that deep infrastructure background into cybersecurity — specifically security operations, threat analysis, penetration testing, and building resilient digital environments. The network engineer in me knows exactly what attackers are looking for.</p>
+        </div>
+        <!-- Dynamically filled by render.js -->
+        <div id="about-contact-cards" class="about-cards reveal"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="bg-bg" style="scroll-margin-top:80px;">
+    <div class="container">
+      <div class="section-label">// Education</div>
+      <h2 class="section-title">Academic<br>Background</h2>
+      <p class="section-sub">Formalising a decade of practical IT experience with a specialised cybersecurity qualification in Sydney.</p>
+      <!-- Dynamically filled by render.js -->
+      <div id="education-cards"></div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="section-label">// What Drives Me</div>
+      <h2 class="section-title">Core Approach</h2>
+      <p class="section-sub">The principles I bring to every role and challenge.</p>
+      <div class="values-grid">
+        <div class="value-card reveal"><div class="value-icon">🔍</div><div class="value-title">Think Like an Attacker</div><div class="value-body">Understanding how systems are exploited is the foundation of effective defence. I apply an offensive mindset to every security challenge.</div></div>
+        <div class="value-card reveal reveal-delay-1"><div class="value-icon">⚙️</div><div class="value-title">Infrastructure First</div><div class="value-body">Years configuring real-world routers, switches, and firewalls give me intuitions about attack surfaces that purely theoretical study can't replicate.</div></div>
+        <div class="value-card reveal reveal-delay-2"><div class="value-icon">📋</div><div class="value-title">Document Everything</div><div class="value-body">From network configs to vulnerability reports — clear, structured documentation is a core professional discipline I take seriously.</div></div>
+        <div class="value-card reveal"><div class="value-icon">🤝</div><div class="value-title">Team-Oriented</div><div class="value-body">Whether working with field technicians, remote teams, or academic peers, I adapt quickly to collaborative environments.</div></div>
+        <div class="value-card reveal reveal-delay-1"><div class="value-icon">📈</div><div class="value-title">Continuously Learning</div><div class="value-body">CTF challenges, security research, coursework — I'm always pushing the edge of what I know and building toward the next challenge.</div></div>
+        <div class="value-card reveal reveal-delay-2"><div class="value-icon">🌏</div><div class="value-title">Cross-Cultural Fluency</div><div class="value-body">Five languages spoken, experience across India and Australia — I communicate well across diverse teams and environments.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-navy">
+    <div class="container" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;display:flex;">// Ready to Connect?</div>
+      <h2 class="section-title" style="color:#dce8ff;margin-bottom:1rem;">Let's Work Together</h2>
+      <p style="font-size:.9rem;color:#2a4070;margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;">Open to cybersecurity internship opportunities in penetration testing, network security, and security operations across Sydney.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-accent">Get In Touch</a>
+        <a href="experience.html" class="btn btn-outline" style="color:#dce8ff;border-color:rgba(255,255,255,0.2);">View Experience</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

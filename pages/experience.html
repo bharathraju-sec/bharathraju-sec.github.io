@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience — __NAME__</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-label">// 02 — Experience</div>
+      <h1>Professional<br>Background</h1>
+      <p>From enterprise network infrastructure in Bengaluru to field deployments in Sydney — a career built on deep, hands-on technical experience.</p>
+    </div>
+  </div>
+
+  <section class="bg-bg">
+    <div class="container">
+      <div class="exp-layout">
+
+        <!-- Timeline — filled by render.js -->
+        <div id="experience-timeline" class="exp-grid"></div>
+
+        <!-- Sidebar -->
+        <aside class="exp-sidebar">
+          <div class="sidebar-card reveal">
+            <div class="sidebar-title">Career Summary</div>
+            <!-- filled by render.js -->
+            <div id="career-summary"></div>
+          </div>
+          <div class="sidebar-card reveal reveal-delay-1">
+            <div class="sidebar-title">Key Technical Skills</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Routers, Switches, Firewalls</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>ISP Coordination & Migration</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Network Security Measures</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Patch & Firmware Management</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Structured Cabling</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Connectivity Validation</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Technical Documentation</div>
+          </div>
+          <div class="sidebar-card reveal reveal-delay-2">
+            <div class="sidebar-title">Environments</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Enterprise / Multi-site</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Data Centres</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Branch Offices</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Broadcast Media</div>
+            <div class="sidebar-item"><span class="sidebar-dot"></span>Field Deployments</div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Extra-curricular — filled by render.js -->
+  <section class="bg-white">
+    <div class="container">
+      <div class="section-label">// Extra-Curricular</div>
+      <h2 class="section-title">Beyond Work</h2>
+      <p class="section-sub">Activities that sharpen my cybersecurity skills and demonstrate continuous learning.</p>
+      <div id="extracurricular-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;"></div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

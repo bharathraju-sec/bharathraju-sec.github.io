@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bharath Raju Subramani — Cybersecurity Portfolio. MIT Cyber Security, Macquarie University, Sydney.">
+  <title>__NAME__ — Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      margin-top: 68px;
+    }
+    .hero-left {
+      background: var(--white);
+      padding: 5.5rem 3rem 5rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid var(--border); position: relative;
+    }
+    .hero-left::after {
+      content: ''; position: absolute; bottom: 0; left: 4rem; right: 3rem;
+      height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent);
+    }
+    #hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.2rem, 6vw, 5rem); font-weight: 800;
+      line-height: 1.0; letter-spacing: -0.04em; color: var(--navy);
+      margin-bottom: 0.4rem; animation: fadeUp 0.7s 0.15s both;
+    }
+    #hero-name .accent { color: var(--accent); }
+    .hero-title {
+      font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+      margin-bottom: 1.8rem; animation: fadeUp 0.6s 0.3s both;
+    }
+    #hero-tagline {
+      font-size: 0.92rem; font-weight: 300; color: #4a5568;
+      line-height: 1.9; max-width: 440px; margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.4s both;
+    }
+    #hero-stats {
+      display: flex; gap: 2.5rem;
+      padding: 1.8rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.5s both;
+    }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.04em; color: var(--navy); line-height: 1; }
+    .stat-num sup { font-size: 1rem; color: var(--accent); vertical-align: super; }
+    .stat-label { font-size: 0.65rem; font-weight: 500; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; margin-top: 0.3rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.6s both; }
+    /* Right panel */
+    .hero-right {
+      background: var(--navy); padding: 4rem 3rem;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-right::before { content: ''; position: absolute; top: -100px; right: -100px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(0,87,255,0.2), transparent 70%); pointer-events: none; }
+    .hero-right::after  { content: ''; position: absolute; bottom: -80px; left: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(0,194,255,0.1), transparent 70%); pointer-events: none; }
+    .panel-label { font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: #2a3f60; margin-bottom: 0.9rem; font-weight: 600; }
+    .skill-row { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border: 1px solid rgba(255,255,255,0.055); background: rgba(255,255,255,0.03); margin-bottom: 0.5rem; transition: all 0.25s; border-radius: var(--radius); }
+    .skill-row:hover { background: rgba(0,87,255,0.12); border-color: rgba(0,87,255,0.3); transform: translateX(4px); }
+    .skill-row-name { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 600; color: #dce8ff; }
+    .skill-row-sub  { font-size: 0.62rem; color: #2a4070; margin-top: 0.12rem; }
+    .hero-right .skill-bar-bg { width: 68px; height: 2px; background: rgba(255,255,255,0.07); border-radius: 2px; }
+    .hero-right .skill-bar-fill { border-radius: 2px; background: linear-gradient(to right, var(--accent), var(--accent2)); }
+    .tools-strip { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    #hero-tool-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+    .tool-chip { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid rgba(0,194,255,0.2); color: rgba(0,194,255,0.65); border-radius: 2px; transition: all 0.2s; }
+    .tool-chip:hover { border-color: var(--accent2); color: var(--accent2); }
+    /* Quick nav cards */
+    .home-sections { background: var(--bg); padding: 5rem 0; }
+    .home-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .home-nav-card { background: var(--white); border: 1px solid var(--border); padding: 2rem 1.8rem; border-radius: var(--radius); display: flex; flex-direction: column; gap: 0.6rem; transition: all 0.28s; position: relative; overflow: hidden; text-decoration: none; color: inherit; }
+    .home-nav-card::after { content: '→'; position: absolute; bottom: 1.5rem; right: 1.5rem; font-family: 'Syne', sans-serif; font-size: 1rem; color: var(--border); transition: all 0.25s; }
+    .home-nav-card:hover { border-color: rgba(0,87,255,0.2); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .home-nav-card:hover::after { color: var(--accent); transform: translateX(4px); }
+    .hnc-icon  { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    .hnc-title { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+    .hnc-body  { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
+    .cta-strip { background: var(--navy); padding: 4.5rem 0; }
+    .cta-strip-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .cta-strip h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: #dce8ff; letter-spacing: -0.02em; }
+    .cta-strip p  { font-size: 0.88rem; font-weight: 300; color: #2a4070; margin-top: 0.4rem; }
+    @media (max-width: 1024px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { display: none; }
+      .hero-left { padding: 3.5rem 1.5rem; }
+      .home-grid { grid-template-columns: 1fr 1fr; }
+      .cta-strip-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 640px) { .home-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div id="nav-placeholder" data-home="true"></div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <div id="avail-badge" class="avail-badge" style="margin-bottom:2rem; animation:fadeUp 0.5s 0.05s both;"></div>
+      <h1 id="hero-name"></h1>
+      <div class="hero-title">MIT Cybersecurity · Macquarie University</div>
+      <p id="hero-tagline"></p>
+      <div id="hero-stats" style="animation:fadeUp 0.6s 0.5s both;"></div>
+      <div class="hero-btns">
+        <a href="pages/projects.html" class="btn btn-primary">View Projects</a>
+        <a href="pages/contact.html" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="panel-label">// Core Competencies</div>
+      <div id="hero-panel-skills"></div>
+      <div class="tools-strip">
+        <div class="panel-label">// Toolset</div>
+        <div id="hero-tool-chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK NAV CARDS -->
+  <section class="home-sections">
+    <div class="container">
+      <div class="section-label">// Explore</div>
+      <h2 class="section-title">What's Inside</h2>
+      <p class="section-sub">A complete portfolio covering my background, experience, projects, and skills.</p>
+      <div class="home-grid">
+        <a href="pages/about.html" class="home-nav-card reveal">
+          <div class="hnc-icon">👤</div>
+          <div class="hnc-title">About Me</div>
+          <div class="hnc-body">My background, education, and the story behind moving from network engineering into cybersecurity.</div>
+        </a>
+        <a href="pages/experience.html" class="home-nav-card reveal reveal-delay-1">
+          <div class="hnc-icon">💼</div>
+          <div class="hnc-title">Experience</div>
+          <div class="hnc-body">Field network engineer in Sydney, network engineer in Bengaluru — 4+ years of hands-on infrastructure work.</div>
+        </a>
+        <a href="pages/projects.html" class="home-nav-card reveal reveal-delay-2">
+          <div class="hnc-icon">🛠</div>
+          <div class="hnc-title">Projects</div>
+          <div class="hnc-body">Academic and personal projects spanning ML, security tooling, mobile development, and CTF challenges.</div>
+        </a>
+        <a href="pages/skills.html" class="home-nav-card reveal reveal-delay-3">
+          <div class="hnc-icon">⚡</div>
+          <div class="hnc-title">Skills</div>
+          <div class="hnc-body">Security tools, networking, programming, and a track record of applying them in real environments.</div>
+        </a>
+        <a href="pages/contact.html" class="home-nav-card reveal reveal-delay-1">
+          <div class="hnc-icon">✉️</div>
+          <div class="hnc-title">Contact</div>
+          <div class="hnc-body">Open to cybersecurity internship opportunities in Sydney. Let's talk.</div>
+        </a>
+        <a href="pages/about.html#education" class="home-nav-card reveal reveal-delay-2">
+          <div class="hnc-icon">🎓</div>
+          <div class="hnc-title">Education</div>
+          <div class="hnc-body">Master of Information Technology (Cyber Security) — Macquarie University, Sydney.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div class="cta-strip-inner">
+      <div>
+        <h2>Looking for a cybersecurity intern?</h2>
+        <p>Based in Sydney. Available immediately. Network background + security mindset.</p>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="pages/contact.html" class="btn btn-accent">Get In Touch</a>
+        <a href="pages/projects.html" class="btn btn-outline" style="color:#dce8ff;border-color:rgba(255,255,255,0.2);">See My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
