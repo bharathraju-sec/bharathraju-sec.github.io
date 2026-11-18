@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bharath Raju Subramani — Cybersecurity &amp; Network Engineering</title>
+<meta name="description" content="Cybersecurity postgraduate (Macquarie University) and field network engineer in Sydney. Network security, incident response, threat intelligence and agentic AI security.">
+<meta name="author" content="Bharath Raju Subramani">
+<meta name="theme-color" content="#07090c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bharath Raju Subramani — Cybersecurity & Network Engineering">
+<meta property="og:description" content="From routers to AI agents: network security, incident response and agentic AI security. Sydney, NSW.">
+<!-- After deploying on Vercel, add your final URL here:
+<meta property="og:url" content="https://YOUR-SITE.vercel.app/">
+<link rel="canonical" href="https://YOUR-SITE.vercel.app/"> -->
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307090c'/%3E%3Cpath d='M32 10l18 8v13c0 11-7.7 19.6-18 23-10.3-3.4-18-12-18-23V18z' fill='none' stroke='%235cf2a6' stroke-width='4'/%3E%3Ccircle cx='32' cy='31' r='5' fill='%235cf2a6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Bharath Raju Subramani","jobTitle":"Field Network Engineer","worksFor":{"@type":"Organization","name":"ENbridge IT Services"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Macquarie University"},"address":{"@type":"PostalAddress","addressLocality":"Sydney","addressRegion":"NSW","addressCountry":"AU"},"sameAs":["https://linkedin.com/in/rajubha","https://github.com/bharathraju-sec"],"knowsAbout":["Network Security","Incident Response","Threat Intelligence","Vulnerability Assessment","Agentic AI Security","SD-WAN"]}
+</script>
+<style>
+  :root{
+    --bg:#07090c; --bg-2:#0b0f14; --card:#0e1319; --card-2:#121922;
+    --line:#1b232d; --line-2:#28333f;
+    --text:#e8edf2; --body:#b5bfca; --muted:#8693a1; --dim:#566270;
+    --accent:#5cf2a6; --accent-ink:#04120b; --accent-2:#3ab8ff; --warn:#ffb547; --bad:#ff6b6b;
+    --radius:16px; --max:1140px;
+    --f-head:'Space Grotesk',system-ui,sans-serif;
+    --f-body:'Inter',system-ui,sans-serif;
+    --f-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{background:var(--bg);color:var(--text);font-family:var(--f-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+  .skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:8px;font-weight:600}
+  .skip:focus{top:12px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .mono{font-family:var(--f-mono)}
+  .label{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .label::before{content:"// ";color:var(--dim)}
+  h1,h2,h3{font-family:var(--f-head);letter-spacing:-.02em;line-height:1.1}
+  h2{font-size:clamp(30px,4.4vw,46px);font-weight:600;margin:12px 0 16px}
+  h2 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--muted);max-width:620px;font-size:17px}
+  section{padding:110px 0;position:relative}
+  .sec-head{margin-bottom:48px}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:13px;font-weight:500;padding:12px 18px;border-radius:10px;border:1px solid var(--line-2);background:transparent;color:var(--text);transition:border-color .2s,color .2s,background .2s,transform .2s;cursor:pointer;white-space:nowrap}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .btn.primary:hover{background:#82f8bd;color:var(--accent-ink);transform:translateY(-1px)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--f-mono);font-size:11.5px;padding:5px 10px;border-radius:7px;border:1px solid var(--line-2);color:#a7b2be;background:rgba(255,255,255,.015)}
+  .chip.core{border-color:rgba(92,242,166,.45);color:var(--accent);background:rgba(92,242,166,.06)}
+
+  /* NAV */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:50;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+  .nav.scrolled,.nav.open{background:rgba(7,9,12,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+  .brand{font-family:var(--f-mono);font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse 2.4s infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  .links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+  .links a{position:relative;transition:color .2s}
+  .links a:hover,.links a.active{color:var(--text)}
+  .links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--accent)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line-2);color:var(--text);border-radius:10px;width:42px;height:42px;font-size:18px;cursor:pointer}
+  .progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 90px;overflow:hidden}
+  #net{position:absolute;inset:0;width:100%;height:100%;opacity:.6}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 30% 50%,transparent 0%,var(--bg) 88%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center;width:100%}
+  .status{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;color:var(--muted);border:1px solid var(--line-2);background:rgba(14,19,25,.75);padding:7px 14px;border-radius:999px;margin-bottom:28px}
+  .status i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  .hero h1{font-size:clamp(44px,6.8vw,82px);font-weight:700}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .role{font-family:var(--f-mono);font-size:14px;color:var(--muted);margin:22px 0 18px;display:flex;flex-wrap:wrap;gap:8px}
+  .hero .role span{border:1px solid var(--line-2);border-radius:7px;padding:4px 10px;background:rgba(14,19,25,.6)}
+  .hero .tagline{font-size:clamp(18px,2vw,21px);color:#c8d1da;max-width:560px;margin-bottom:34px}
+  .hero .tagline b{color:var(--text);font-weight:500}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .term{background:rgba(11,15,20,.9);border:1px solid var(--line-2);border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.8);backdrop-filter:blur(6px)}
+  .term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .term-bar b{width:11px;height:11px;border-radius:50%}
+  .term-bar b:nth-child(1){background:#ff5f57}.term-bar b:nth-child(2){background:#febc2e}.term-bar b:nth-child(3){background:#28c840}
+  .term-bar span{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--dim)}
+  .term pre{font-family:var(--f-mono);font-size:13px;line-height:1.85;padding:20px 22px;color:#c3ccd6;white-space:pre-wrap;min-height:300px}
+  .term .p{color:var(--accent)} .term .k{color:var(--accent-2)} .term .w{color:var(--warn)}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .scroll-hint{position:absolute;left:50%;bottom:28px;z-index:2;transform:translateX(-50%);font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--dim);display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scroll-hint i{width:1px;height:34px;background:linear-gradient(var(--accent),transparent);animation:drop 1.8s infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* STATS */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:36px 24px;border-right:1px solid var(--line)}
+  .stat:first-child{padding-left:0}
+  .stat:last-child{border-right:0}
+  .stat .n{font-family:var(--f-head);font-size:clamp(34px,4vw,48px);font-weight:600}
+  .stat .n sup{color:var(--accent);font-size:.55em;vertical-align:.7em;margin-left:2px}
+  .stat .t{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+  /* FOCUS */
+  .focus{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .pillar{padding:30px 28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);transition:border-color .25s,transform .25s}
+  .pillar:hover{border-color:var(--line-2);transform:translateY(-3px)}
+  .pillar .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(92,242,166,.08);border:1px solid rgba(92,242,166,.22);color:var(--accent);margin-bottom:20px}
+  .pillar .ico svg{width:22px;height:22px}
+  .pillar h3{font-size:21px;font-weight:600;margin-bottom:10px}
+  .pillar p{color:var(--body);font-size:15px;margin-bottom:18px}
+  .pillar .proof{font-family:var(--f-mono);font-size:12px;color:var(--muted);border-top:1px dashed var(--line-2);padding-top:14px}
+  .pillar .proof b{color:var(--accent);font-weight:500}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start}
+  .about p{color:var(--body);font-size:17px;margin-bottom:18px}
+  .about p strong{color:var(--text);font-weight:500}
+  .facts{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden}
+  .facts h3{font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--muted);padding:16px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+  .facts dl{display:grid;grid-template-columns:auto 1fr}
+  .facts dt,.facts dd{padding:14px 22px;border-bottom:1px solid var(--line);font-size:14px}
+  .facts dt{font-family:var(--f-mono);font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;padding-right:8px}
+  .facts dd{color:var(--text)}
+  .facts dt:nth-last-child(2),.facts dd:last-child{border-bottom:0}
+
+  /* EXPERIENCE — timeline */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--accent),var(--line-2) 40%,var(--line))}
+  .job{position:relative;padding:30px 32px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);margin-bottom:18px;transition:border-color .25s}
+  .job:hover{border-color:var(--line-2)}
+  .job::before{content:"";position:absolute;left:-34px;top:36px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--line-2)}
+  .job.current::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 5px rgba(92,242,166,.15)}
+  .job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;align-items:baseline}
+  .job h3{font-size:22px;font-weight:600}
+  .job .co{color:var(--accent-2);font-size:15px}
+  .job .when{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);text-align:right}
+  .job .when b{color:var(--accent);font-weight:500}
+  .highlight{margin:18px 0 16px;padding:12px 16px;border-left:2px solid var(--warn);background:rgba(255,181,71,.06);border-radius:0 10px 10px 0;font-size:14.5px;color:#e6d6bd}
+  .highlight b{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--warn);font-weight:500;margin-right:8px}
+  .job ul{list-style:none;display:grid;gap:9px;margin-bottom:18px}
+  .job li{position:relative;padding-left:22px;color:var(--body);font-size:15px}
+  .job li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+  .job.compact{padding:20px 32px}
+  .job.compact p{color:var(--muted);font-size:14.5px;margin-top:8px}
+
+  /* PROJECTS */
+  .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .proj-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--f-mono);font-size:12.5px;color:var(--accent-2);align-self:flex-start}
+  .proj-link:hover{color:var(--accent)}
+  .proj-link svg{width:16px;height:16px}
+  .earlier{margin-top:34px}
+  .earlier h3{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .earlier-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .mini{display:flex;gap:16px;padding:20px 22px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+  .mini .ic{flex:none;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:rgba(58,184,255,.08);border:1px solid rgba(58,184,255,.22);color:var(--accent-2)}
+  .mini .ic svg{width:20px;height:20px}
+  .mini b{display:block;font-family:var(--f-head);font-size:16px;font-weight:600;margin-bottom:4px}
+  .mini p{font-size:14px;color:var(--body);margin-bottom:10px}
+  .mini .chips .chip{font-size:11px;padding:3px 8px}
+  .proj{position:relative;display:flex;flex-direction:column;padding:32px 30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden;transition:border-color .25s,transform .25s}
+  .proj:hover{border-color:rgba(92,242,166,.4);transform:translateY(-3px)}
+  .proj.featured{grid-column:1/-1;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;background:linear-gradient(135deg,var(--card-2),var(--card))}
+  .proj .num{position:absolute;right:22px;top:14px;font-family:var(--f-head);font-size:72px;font-weight:700;color:rgba(255,255,255,.03);line-height:1;pointer-events:none}
+  .proj .kind{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .proj h3{font-size:24px;font-weight:600;margin-bottom:6px}
+  .proj.featured h3{font-size:clamp(26px,3vw,34px)}
+  .proj .meta{font-size:13px;color:var(--muted);margin-bottom:18px}
+  .badge{display:inline-block;font-family:var(--f-mono);font-size:11px;color:var(--warn);border:1px solid rgba(255,181,71,.35);border-radius:6px;padding:2px 8px;margin-left:8px;vertical-align:4px;letter-spacing:0}
+  .case{display:grid;gap:12px;margin-bottom:20px}
+  .case div{font-size:15px;color:var(--body)}
+  .case b{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:2px}
+  .proj .chips{margin-top:auto}
+
+  /* flow diagram */
+  .flow{display:flex;flex-direction:column;gap:0;padding:22px;border:1px solid var(--line-2);border-radius:14px;background:rgba(7,9,12,.6);font-family:var(--f-mono);font-size:12.5px}
+  .flow .row{display:flex;align-items:center;gap:12px}
+  .flow .node{flex:1;padding:11px 14px;border:1px solid var(--line-2);border-radius:10px;background:var(--card);color:var(--text);display:flex;justify-content:space-between;gap:10px}
+  .flow .node small{color:var(--dim);font-size:11px}
+  .flow .node.gate{border-color:rgba(92,242,166,.5);background:rgba(92,242,166,.06);color:var(--accent)}
+  .flow .node.bad{border-color:rgba(255,107,107,.45);background:rgba(255,107,107,.06);color:var(--bad)}
+  .flow .arrow{height:22px;margin-left:24px;border-left:1px dashed var(--line-2);position:relative}
+  .flow .arrow::after{content:"";position:absolute;left:-4px;bottom:0;border:4px solid transparent;border-top-color:var(--line-2);border-bottom:0}
+  .flow .split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .flow .caption{margin-top:14px;color:var(--dim);font-size:11px}
+  .mini-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 20px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+  .mini-flow span{padding:5px 9px;border:1px solid var(--line-2);border-radius:7px;background:rgba(7,9,12,.5)}
+  .mini-flow span.on{border-color:rgba(92,242,166,.45);color:var(--accent)}
+  .mini-flow em{font-style:normal;color:var(--dim)}
+  .more{margin-top:26px;display:flex;justify-content:center}
+
+  /* SKILLS — matrix */
+  .matrix{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden}
+  .mrow{display:grid;grid-template-columns:240px 1fr;border-bottom:1px solid var(--line)}
+  .mrow:last-child{border-bottom:0}
+  .mrow h3{display:flex;align-items:center;gap:12px;padding:22px 24px;font-size:15px;font-weight:600;border-right:1px solid var(--line);background:rgba(255,255,255,.012)}
+  .mrow h3 svg{width:18px;height:18px;color:var(--accent);flex:none}
+  .mrow .chips{padding:18px 24px;align-content:center}
+  .legend{display:flex;gap:18px;margin-top:14px;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend i{width:12px;height:12px;border-radius:4px;border:1px solid var(--line-2)}
+  .legend i.core{border-color:rgba(92,242,166,.6);background:rgba(92,242,166,.15)}
+
+  /* CREDENTIALS */
+  .cred-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:start}
+  .certs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .cert{display:flex;align-items:center;gap:14px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+  .cert.key{border-color:rgba(92,242,166,.3)}
+  .cert .ic{flex:none;width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-family:var(--f-mono);font-size:11.5px;font-weight:500;color:var(--accent);background:rgba(92,242,166,.08);border:1px solid rgba(92,242,166,.2)}
+  .cert b{display:block;font-weight:500;font-size:14.5px;line-height:1.3}
+  .cert span{font-size:12.5px;color:var(--muted)}
+  .side{display:grid;gap:18px}
+  .edu,.acts{padding:26px 26px;border:1px solid var(--line-2);border-radius:var(--radius)}
+  .edu{background:linear-gradient(130deg,rgba(92,242,166,.07),rgba(58,184,255,.04))}
+  .edu small,.acts small{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .edu b{display:block;font-family:var(--f-head);font-size:21px;font-weight:600;margin:8px 0 6px;line-height:1.25}
+  .edu span{color:var(--muted);font-size:14px}
+  .acts{background:var(--card)}
+  .acts ul{list-style:none;margin-top:12px;display:grid;gap:10px}
+  .acts li{position:relative;padding-left:22px;color:var(--body);font-size:14.5px}
+  .acts li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+
+  /* CONTACT */
+  .contact{text-align:center;padding:130px 0 100px;border-top:1px solid var(--line);background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(92,242,166,.08),transparent 70%)}
+  .contact h2{font-size:clamp(40px,6.2vw,66px)}
+  .contact .lede{margin:0 auto 34px}
+  .mail{display:inline-flex;align-items:stretch;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;max-width:100%}
+  .mail a{padding:14px 20px;font-family:var(--f-mono);font-size:14px;color:var(--text);overflow:hidden;text-overflow:ellipsis}
+  .mail a:hover{color:var(--accent)}
+  .mail button{border:0;border-left:1px solid var(--line-2);background:var(--accent);color:var(--accent-ink);font-family:var(--f-mono);font-size:13px;font-weight:500;padding:0 18px;cursor:pointer;min-width:92px}
+  .socials{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .socials a{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid var(--line-2);border-radius:10px;font-size:14px;color:#c3ccd6;transition:border-color .2s,color .2s}
+  .socials a:hover{border-color:var(--accent);color:var(--accent)}
+  .socials svg{width:18px;height:18px}
+  footer{padding:28px 0;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a:hover{color:var(--accent)}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:1000px){
+    .hero .wrap,.about-grid,.cred-grid{grid-template-columns:1fr;gap:40px}
+    .focus{grid-template-columns:1fr}
+    .proj.featured{grid-template-columns:1fr;gap:28px}
+    .projects{grid-template-columns:1fr 1fr}
+    .projects .proj:last-child{grid-column:1/-1}
+    .stats .wrap{grid-template-columns:1fr 1fr}
+    .stat:first-child{padding-left:24px}
+    .stat:nth-child(2){border-right:0}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .scroll-hint{display:none}
+  }
+  @media (max-width:760px){
+    .links,.nav .btn{display:none}
+    .menu-btn{display:block}
+    .nav.open .links{display:flex;flex-direction:column;gap:0;position:absolute;top:68px;left:0;right:0;background:rgba(7,9,12,.97);border-bottom:1px solid var(--line);padding:8px 16px 18px}
+    .nav.open .links a{padding:13px 0;border-bottom:1px solid var(--line);font-size:16px}
+    .nav.open .links a.active::after{display:none}
+    .wrap{padding:0 16px}
+    section{padding:80px 0}
+    .sec-head{margin-bottom:34px}
+    .hero{padding-top:100px}
+    .term pre{font-size:12px;min-height:0}
+    .projects,.certs,.earlier-grid{grid-template-columns:1fr}
+    .projects .proj:last-child{grid-column:auto}
+    .proj{padding:26px 22px}
+    .timeline{padding-left:24px}
+    .timeline::before{left:3px}
+    .job{padding:24px 20px}
+    .job::before{left:-27px;width:14px;height:14px;top:30px}
+    .job .when{text-align:left;width:100%}
+    .job.compact{padding:18px 20px}
+    .mrow{grid-template-columns:1fr}
+    .mrow h3{border-right:0;border-bottom:1px solid var(--line);padding:16px 18px}
+    .mrow .chips{padding:16px 18px}
+    .stat{padding:26px 16px}
+    .stat:first-child{padding-left:16px}
+    .mail{flex-direction:column;width:100%}
+    .mail button{border-left:0;border-top:1px solid var(--line-2);padding:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .brand .dot,.cursor,.scroll-hint i{animation:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="dot"></span>bharath@sec:~$</a>
+    <div class="links" id="links">
+      <a href="#focus">Focus</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="resume.pdf" class="btn" download>Résumé ↓</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="links">☰</button>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="status"><i></i>Sydney, NSW · Open to security roles</div>
+      <h1>Bharath Raju<br><span class="grad">Subramani</span></h1>
+      <div class="role"><span>Cybersecurity</span><span>Network Engineering</span><span>AI Security</span></div>
+      <p class="tagline">From routers to AI agents — I secure the infrastructure businesses actually run on. <b>Three years in enterprise networks, now focused on security.</b></p>
+      <div class="cta">
+        <a href="#projects" class="btn primary">View my work →</a>
+        <a href="resume.pdf" class="btn" download>Download résumé</a>
+        <a href="#contact" class="btn">Get in touch</a>
+      </div>
+    </div>
+    <div class="term" role="img" aria-label="Terminal summary: Bharath Raju Subramani, Field Network Engineer at ENbridge IT, Master of IT in Cyber Security at Macquarie University, certified CEH, CCNA and Google Cybersecurity, based in Sydney.">
+      <div class="term-bar"><b></b><b></b><b></b><span>~/profile — zsh</span></div>
+      <pre id="termText" aria-hidden="true"></pre>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">SCROLL<i></i></div>
+</header>
+
+<main id="main">
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n" data-count="3">0<sup>+</sup></div><div class="t">Years in network engineering</div></div>
+    <div class="stat"><div class="n" data-count="20">0<sup>+</sup></div><div class="t">Enterprise assignments</div></div>
+    <div class="stat"><div class="n" data-count="150">0</div><div class="t">Computers kept running</div></div>
+    <div class="stat"><div class="n" data-count="6">0</div><div class="t">Certifications &amp; training</div></div>
+  </div>
+</div>
+
+<!-- FOCUS -->
+<section id="focus">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What I do</div>
+      <h2>Three areas, <em>one goal</em></h2>
+      <p class="lede">Keep the network trustworthy — whether the threat is a misconfigured edge router, a compromised account or a manipulated AI agent.</p>
+    </div>
+    <div class="focus">
+      <article class="pillar reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h5m0 0l5-6m-5 6l5 6"/></svg></div>
+        <h3>Network Security</h3>
+        <p>Deploying, migrating and hardening enterprise networks — SD-WAN, firewalls, segmentation and secure decommissioning.</p>
+        <div class="proof"><b>20+</b> enterprise assignments across banking, government &amp; retail</div>
+      </article>
+      <article class="pillar reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v3l2 2"/></svg></div>
+        <h3>Incident Response &amp; Threat Intel</h3>
+        <p>Reconstructing attacker activity from logs and evidence, then planning containment, recovery and regulatory response.</p>
+        <div class="proof">Aligned to <b>NIST SP 800-61</b> · <b>MITRE ATT&amp;CK</b></div>
+      </article>
+      <article class="pillar reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Agentic AI Security</h3>
+        <p>Guardrails for AI agents that use tools — policy enforcement, tool authorisation and defences against indirect prompt injection.</p>
+        <div class="proof">Major project: <b>AgentOne</b> · Macquarie University</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about" style="padding-top:20px">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="label">About</div>
+      <h2>Hands-on with the network.<br><em>Focused on security.</em></h2>
+      <p>I'm a <strong>Cybersecurity postgraduate from Macquarie University</strong> with over three years of professional experience in enterprise network engineering and network security across India and Australia.</p>
+      <p>Today I work onsite as a field network engineer in Sydney, delivering SD-WAN migrations, deployments and circuit upgrades for banking, government, retail and corporate clients — often as the only engineer in the room, coordinating with remote teams and carriers.</p>
+      <p>I started in customer-facing sales before moving into engineering, so I pair technical depth with <strong>commercial awareness, risk thinking and clear stakeholder communication</strong>.</p>
+    </div>
+    <aside class="facts reveal" aria-label="Quick facts">
+      <h3>$ cat facts.yml</h3>
+      <dl>
+        <dt>Now</dt><dd>Field Network Engineer, ENbridge IT</dd>
+        <dt>Study</dt><dd>M.IT Cyber Security, Macquarie</dd>
+        <dt>Base</dt><dd>Sydney, NSW 🇦🇺</dd>
+        <dt>Certs</dt><dd>CEH · CCNA · Google Cybersecurity</dd>
+        <dt>Stack</dt><dd>Cisco · Aruba · VeloCloud · Kali · Python</dd>
+        <dt>Into</dt><dd>CTFs, IR, LLM &amp; agent security</dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Experience</div>
+      <h2>Where I've <em>worked</em></h2>
+    </div>
+    <div class="timeline">
+      <article class="job current reveal">
+        <div class="job-head">
+          <div><h3>Field Network Engineer</h3><span class="co">ENbridge IT Services</span></div>
+          <div class="when"><b>05/2026 — Present</b><br>Sydney, NSW</div>
+        </div>
+        <div class="highlight"><b>IMPACT</b>Caught an asset-identification discrepancy during decommissioning, preventing removal of the wrong network equipment.</div>
+        <ul>
+          <li>Delivered 20+ enterprise infrastructure assignments across banking, government, retail and corporate environments — SD-WAN migrations, network deployments and circuit upgrades.</li>
+          <li>Installed, migrated and troubleshot Cisco ISR, HPE Aruba EdgeConnect and VMware VeloCloud for secure connectivity and service continuity.</li>
+          <li>Worked independently onsite, coordinating with remote engineering teams, AT&amp;T DTAC and client stakeholders to close out deliverables.</li>
+        </ul>
+        <div class="chips"><span class="chip">SD-WAN</span><span class="chip">Cisco ISR</span><span class="chip">Aruba EdgeConnect</span><span class="chip">VMware VeloCloud</span><span class="chip">Secure decommissioning</span></div>
+      </article>
+      <article class="job reveal">
+        <div class="job-head">
+          <div><h3>Network Engineer</h3><span class="co">VNews24 Kannada</span></div>
+          <div class="when"><b>09/2021 — 06/2024</b><br>Bengaluru, India</div>
+        </div>
+        <div class="highlight"><b>SCALE</b>Kept a live broadcast newsroom online — ~100 staff, 150 computers and eight Windows Servers — with a two-person team.</div>
+        <ul>
+          <li>Administered Cisco firewalls, routers, switches and load balancers to support network security and availability.</li>
+          <li>Resolved connectivity issues, hardware faults and performance problems to minimise disruption to broadcast operations.</li>
+          <li>Ran hardware replacements, firmware upgrades and infrastructure improvements to strengthen security and business continuity.</li>
+        </ul>
+        <div class="chips"><span class="chip">Cisco firewalls</span><span class="chip">Routing &amp; switching</span><span class="chip">Load balancing</span><span class="chip">Windows Server</span><span class="chip">Firmware patching</span></div>
+      </article>
+      <article class="job compact reveal">
+        <div class="job-head">
+          <div><h3 style="font-size:18px">Sales Executive</h3><span class="co">TVS – Prakruthi Mobikes</span></div>
+          <div class="when">08/2014 — 04/2017 · Bengaluru</div>
+        </div>
+        <p>Hit monthly targets in an eight-person team and built lasting customer relationships — where I learned to explain things clearly and own outcomes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Selected work</div>
+      <h2>Security <em>projects</em></h2>
+      <p class="lede">Research and builds across agentic AI security, incident response and network assurance.</p>
+    </div>
+    <div class="projects">
+      <article class="proj featured reveal">
+        <span class="num">01</span>
+        <div>
+          <div class="kind">AI Security · Major Project · 2026</div>
+          <h3>AgentOne</h3>
+          <div class="meta">Agentic AI Penetration Testing · Macquarie University</div>
+          <div class="case">
+            <div><b>Problem</b>AI agents that read untrusted content and call tools can be hijacked by instructions hidden in that content.</div>
+            <div><b>What I did</b>Co-developed a prototype with policy enforcement, tool authorisation and runtime safeguards against indirect prompt injection.</div>
+            <div><b>Result</b>Tested through controlled attack simulations, documenting blocked attacks, legitimate task outcomes and system limitations.</div>
+          </div>
+          <div class="chips"><span class="chip core">Prompt injection</span><span class="chip core">Tool authorisation</span><span class="chip">LLM security</span><span class="chip">Guardrails</span><span class="chip">Python</span></div>
+        </div>
+        <div class="flow" aria-label="Diagram: untrusted content enters the agent; a policy and tool-authorisation gate allows legitimate tool calls and blocks injected ones.">
+          <div class="row"><div class="node">Untrusted web page / doc<small>input</small></div></div>
+          <div class="arrow"></div>
+          <div class="row"><div class="node">LLM agent plans a tool call<small>agent</small></div></div>
+          <div class="arrow"></div>
+          <div class="row"><div class="node gate">Policy + tool authorisation<small>guardrail</small></div></div>
+          <div class="arrow"></div>
+          <div class="split">
+            <div class="node gate">✓ Allowed task<small>run</small></div>
+            <div class="node bad">✕ Injected action<small>block</small></div>
+          </div>
+          <div class="caption">// every tool call is checked against policy before it runs</div>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <span class="num">02</span>
+        <div class="kind">DFIR · Simulated Investigation · 2026</div>
+        <h3>Cyber Incident Investigation &amp; Response</h3>
+        <div class="meta">Macquarie University</div>
+        <div class="mini-flow" aria-label="Attack chain"><span>Infostealer</span><em>→</em><span>Stolen creds</span><em>→</em><span>Account takeover</span><em>→</em><span class="on">Contain &amp; recover</span></div>
+        <div class="case">
+          <div><b>What I did</b>Analysed authentication logs, audit records and digital evidence to reconstruct attacker activity and assess data exposure.</div>
+          <div><b>Result</b>An incident response plan covering containment, recovery, evidence preservation and Australian regulatory obligations.</div>
+        </div>
+        <div class="chips"><span class="chip core">Incident response</span><span class="chip">Log analysis</span><span class="chip">NIST SP 800-61</span><span class="chip">MITRE ATT&amp;CK</span></div>
+      </article>
+
+      <article class="proj reveal">
+        <span class="num">03</span>
+        <div class="kind">Network Security · Independent · 2026 –</div>
+        <h3>EdgeClosure <span class="badge">In progress</span></h3>
+        <div class="meta">B2B network security platform · planning &amp; architecture</div>
+        <div class="mini-flow" aria-label="Platform pipeline"><span>Read-only collect</span><em>→</em><span>Signed evidence</span><em>→</em><span>Validate controls</span><em>→</em><span class="on">Verify fix</span></div>
+        <div class="case">
+          <div><b>Goal</b>Evidence-based security assessment for enterprise networks: validate controls, then prove remediation actually happened.</div>
+          <div><b>Design</b>Read-only data collection, cryptographic evidence verification, secure access control and auditable workflows.</div>
+        </div>
+        <div class="chips"><span class="chip core">Architecture</span><span class="chip">Cryptography</span><span class="chip">Access control</span><span class="chip">Audit trails</span></div>
+      </article>
+
+      <article class="proj reveal">
+        <span class="num">04</span>
+        <div class="kind">AppSec Tool · Open source</div>
+        <h3>Password Strength Analyser</h3>
+        <div class="meta">Client-side web app · JavaScript</div>
+        <div class="mini-flow" aria-label="Analysis pipeline"><span>Keystroke</span><em>→</em><span>Regex rules</span><em>→</em><span>Score + entropy</span><em>→</em><span class="on">Crack-time estimate</span></div>
+        <div class="case">
+          <div><b>What it does</b>Scores a password live as you type — rewarding length and variety, penalising repeats, sequences, years and common or leetspeak passwords.</div>
+          <div><b>Detail</b>Calculates entropy and keyspace, estimates crack time across four attack scenarios (online throttled to offline GPU), and shows the exact rule behind every point. Nothing leaves the browser.</div>
+        </div>
+        <div class="chips"><span class="chip core">JavaScript</span><span class="chip">Regex</span><span class="chip">Entropy</span><span class="chip">Jest tests</span></div>
+        <a class="proj-link" href="https://github.com/bharathraju-sec/password-strength-analyser" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .5z"/></svg>View source on GitHub ↗</a>
+      </article>
+    </div>
+
+    <div class="earlier reveal">
+      <h3>// Earlier projects</h3>
+      <div class="earlier-grid">
+        <div class="mini">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a3 3 0 013 3v6a3 3 0 01-6 0V6a3 3 0 013-3zM5 11a7 7 0 0014 0M12 18v3"/></svg></div>
+          <div>
+            <b>Speech Emotion Detection</b>
+            <p>ML system that classifies emotion from speech — MFCC and spectral features with Librosa, a deep-learning classifier, and a Flask interface for real-time prediction.</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">Librosa</span><span class="chip">Deep learning</span><span class="chip">Flask</span></div>
+          </div>
+        </div>
+        <div class="mini">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <div>
+            <b>Smart Campus Navigation</b>
+            <p>Mobile app for finding buildings and facilities on campus, with GPS routing, Google Maps search and a Firebase real-time backend.</p>
+            <div class="chips"><span class="chip">Mobile</span><span class="chip">Google Maps API</span><span class="chip">Firebase</span><span class="chip">GPS</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="more reveal"><a class="btn" href="https://github.com/bharathraju-sec" target="_blank" rel="noopener">All code on GitHub ↗</a></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Toolkit</div>
+      <h2>Skills &amp; <em>stack</em></h2>
+      <div class="legend"><span><i class="core"></i>Used day-to-day / in projects</span><span><i></i>Working knowledge</span></div>
+    </div>
+    <div class="matrix reveal">
+      <div class="mrow">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h5m0 0l5-6m-5 6l5 6"/></svg>Networking</h3>
+        <div class="chips"><span class="chip core">SD-WAN</span><span class="chip core">Routing &amp; Switching</span><span class="chip core">LAN/WAN</span><span class="chip core">Network Troubleshooting</span><span class="chip">TCP/IP</span><span class="chip">VLANs</span><span class="chip">Subnetting</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">VPNs</span><span class="chip">Load Balancing</span></div>
+      </div>
+      <div class="mrow">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 15h3"/></svg>Enterprise tech</h3>
+        <div class="chips"><span class="chip core">Cisco ISR</span><span class="chip core">Cisco Firewalls</span><span class="chip core">HPE Aruba EdgeConnect</span><span class="chip core">VMware VeloCloud</span><span class="chip">Cisco Switches</span><span class="chip">Windows Server</span></div>
+      </div>
+      <div class="mrow">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>Network security</h3>
+        <div class="chips"><span class="chip core">Firewall Administration</span><span class="chip core">Secure Decommissioning</span><span class="chip">Access Control</span><span class="chip">Network Segmentation</span><span class="chip">Security Patching</span></div>
+      </div>
+      <div class="mrow">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.9L2 18a2 2 0 001.7 3h16.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>Cybersecurity</h3>
+        <div class="chips"><span class="chip core">Incident Response</span><span class="chip core">Vulnerability Assessment</span><span class="chip">Penetration Testing</span><span class="chip">Threat Modelling</span><span class="chip">Security Risk Assessment</span><span class="chip">Cryptography</span></div>
+      </div>
+      <div class="mrow">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Security operations</h3>
+        <div class="chips"><span class="chip core">Log Analysis</span><span class="chip">Threat Intelligence</span><span class="chip">Threat Analysis</span><span class="chip">Security Monitoring</span><span class="chip">SIEM Fundamentals</span></div>
+      </div>
+      <div class="mrow">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg>AI security</h3>
+        <div class="chips"><span class="chip core">Agentic AI Security</span><span class="chip core">Prompt Injection</span><span class="chip core">Tool Authorisation</span><span class="chip">LLM Security</span><span class="chip">Security Guardrails</span></div>
+      </div>
+      <div class="mrow">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5z"/></svg>Tools &amp; frameworks</h3>
+        <div class="chips"><span class="chip core">Wireshark</span><span class="chip core">Kali Linux</span><span class="chip">Nmap</span><span class="chip">Nessus</span><span class="chip">Burp Suite</span><span class="chip">Metasploit</span><span class="chip core">MITRE ATT&amp;CK</span><span class="chip">NIST CSF 2.0</span><span class="chip">NIST SP 800-61</span></div>
+      </div>
+      <div class="mrow">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>Code &amp; platforms</h3>
+        <div class="chips"><span class="chip core">Python</span><span class="chip core">Linux</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">SQL</span><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">VMware</span><span class="chip">PostgreSQL</span><span class="chip">REST APIs</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Credentials</div>
+      <h2>Certifications &amp; <em>education</em></h2>
+    </div>
+    <div class="cred-grid">
+      <div class="certs">
+        <div class="cert key reveal"><div class="ic">CEH</div><div><b>Certified Ethical Hacker</b><span>EC-Council</span></div></div>
+        <div class="cert key reveal"><div class="ic">CCNA</div><div><b>Cisco Certified Network Associate</b><span>Cisco</span></div></div>
+        <div class="cert key reveal"><div class="ic">GCP</div><div><b>Google Cybersecurity Professional Certificate</b><span>Google</span></div></div>
+        <div class="cert reveal"><div class="ic">PY</div><div><b>Python Pro Bootcamp</b><span>Programming</span></div></div>
+        <div class="cert reveal"><div class="ic">FS</div><div><b>Full-Stack Web Development Bootcamp</b><span>Web development</span></div></div>
+        <div class="cert reveal"><div class="ic">JV</div><div><b>Java Programming</b><span>Programming</span></div></div>
+      </div>
+      <div class="side">
+        <div class="edu reveal">
+          <small>Education · 2025 — 2026</small>
+          <b>Master of Information Technology — Cyber Security</b>
+          <span>Macquarie University · Sydney, Australia</span>
+        </div>
+        <div class="acts reveal">
+          <small>Leadership &amp; activities</small>
+          <ul>
+            <li>Capture the Flag challenges, cybersecurity research and technical presentations.</li>
+            <li>Coordinated academic and technical events — team roles, schedules, logistics and stakeholders.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <div class="label">Contact</div>
+    <h2>Let's <em>connect</em></h2>
+    <p class="lede">Hiring for a security, SOC or network security role in Australia — or want to talk agentic AI security? My inbox is open.</p>
+    <div class="mail">
+      <a href="mailto:bharathrarazu14396@gmail.com" id="mailLink">bharathrarazu14396@gmail.com</a>
+      <button type="button" id="copyBtn" aria-live="polite">Copy</button>
+    </div>
+    <div class="socials">
+      <a href="https://linkedin.com/in/rajubha" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>LinkedIn</a>
+      <a href="https://github.com/bharathraju-sec" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .5z"/></svg>GitHub</a>
+      <a href="resume.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>Résumé (PDF)</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Bharath Raju Subramani · Sydney, NSW</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+
+  // nav: scrolled state, progress bar, mobile menu
+  const nav = $('#nav'), bar = $('#progress'), menuBtn = $('#menuBtn');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', scrollY > 20);
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (max > 0 ? scrollY / max * 100 : 0) + '%';
+  };
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  const setMenu = open => { nav.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.textContent = open ? '✕' : '☰'; };
+  menuBtn.onclick = () => setMenu(!nav.classList.contains('open'));
+  $$('#links a').forEach(a => a.onclick = () => setMenu(false));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+  // scroll-spy
+  const navLinks = $$('#links a');
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  }), {rootMargin:'-45% 0px -50% 0px'});
+  $$('section[id]').forEach(s => spy.observe(s));
+
+  // reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.1});
+  $$('.reveal').forEach(el => io.observe(el));
+
+  // counters
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; cio.unobserve(e.target);
+    const el = e.target, end = +el.dataset.count, t0 = performance.now(), dur = reduce ? 0 : 1300;
+    const tick = t => { const p = dur ? Math.min(1, (t - t0) / dur) : 1; el.firstChild.nodeValue = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }), {threshold:.6});
+  $$('[data-count]').forEach(el => cio.observe(el));
+
+  // copy email
+  const copyBtn = $('#copyBtn');
+  copyBtn.onclick = async () => {
+    try { await navigator.clipboard.writeText($('#mailLink').textContent); copyBtn.textContent = 'Copied ✓'; }
+    catch { copyBtn.textContent = 'Select ↑'; }
+    setTimeout(() => copyBtn.textContent = 'Copy', 1800);
+  };
+
+  // terminal typing
+  const lines = [
+    ['<span class="p">➜</span> <span class="k">whoami</span>', 'Bharath Raju Subramani'],
+    ['<span class="p">➜</span> <span class="k">cat</span> role.txt', 'Field Network Engineer @ ENbridge IT\nM.IT Cyber Security — Macquarie Uni'],
+    ['<span class="p">➜</span> <span class="k">ls</span> focus/', 'network-security/   incident-response/\nthreat-intel/       agentic-ai-security/'],
+    ['<span class="p">➜</span> <span class="k">cat</span> certs.txt', '<span class="w">CEH</span> · <span class="w">CCNA</span> · <span class="w">Google Cybersecurity</span>'],
+    ['<span class="p">➜</span> <span class="k">echo</span> $LOCATION', 'Sydney, NSW'],
+  ];
+  const out = $('#termText'), done = '<span class="p">➜</span> <span class="cursor"></span>';
+  if (reduce) out.innerHTML = lines.map(l => l.join('\n')).join('\n\n') + '\n\n' + done;
+  else {
+    let html = '', i = 0;
+    const typeCmd = (cmd, res) => {
+      const plain = cmd.replace(/<[^>]+>/g, ''); let n = 2;
+      const step = () => {
+        if (n <= plain.length) { out.innerHTML = html + '<span class="p">➜</span> ' + plain.slice(2, n++) + '<span class="cursor"></span>'; setTimeout(step, 38); }
+        else { html += cmd + '\n' + res + '\n\n'; out.innerHTML = html + '<span class="cursor"></span>'; setTimeout(next, 380); }
+      };
+      step();
+    };
+    const next = () => { if (i >= lines.length) { out.innerHTML = html + done; return; } typeCmd(...lines[i++]); };
+    setTimeout(next, 600);
+  }
+
+  // network-topology canvas
+  const cv = $('#net'), ctx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2), LINK = 150;
+  let W, H, nodes = [], packets = [], running = true;
+  const resize = () => {
+    W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(Math.min(70, W * H / 22000));
+    nodes = Array.from({length:n}, () => ({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25, r:Math.random()*1.6+1, hub:Math.random()<.12}));
+    packets = [];
+  };
+  const draw = () => {
+    ctx.clearRect(0, 0, W, H);
+    if (!reduce) for (const a of nodes) { a.x += a.vx; a.y += a.vy; if (a.x < 0 || a.x > W) a.vx *= -1; if (a.y < 0 || a.y > H) a.vy *= -1; }
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < LINK) {
+        ctx.strokeStyle = `rgba(92,242,166,${(1 - d / LINK) * .22})`; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        if (!reduce && Math.random() < .0009 && packets.length < 14) packets.push({a, b, t:0});
+      }
+    }
+    for (const n of nodes) { ctx.fillStyle = n.hub ? '#5cf2a6' : 'rgba(170,190,210,.55)'; ctx.beginPath(); ctx.arc(n.x, n.y, n.hub ? n.r + 1.2 : n.r, 0, 7); ctx.fill(); }
+    packets = packets.filter(p => {
+      p.t += .018; if (p.t >= 1) return false;
+      const x = p.a.x + (p.b.x - p.a.x) * p.t, y = p.a.y + (p.b.y - p.a.y) * p.t;
+      ctx.fillStyle = '#3ab8ff'; ctx.shadowColor = '#3ab8ff'; ctx.shadowBlur = 10; ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+      return true;
+    });
+    if (running && !reduce) requestAnimationFrame(draw);
+  };
+  resize(); draw();
+  addEventListener('resize', () => { resize(); if (reduce) draw(); });
+  new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was && !reduce) requestAnimationFrame(draw); }).observe(cv);
+})();
+</script>
+</body>
+</html>
