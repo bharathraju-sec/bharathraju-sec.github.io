@@ -243,3 +243,16 @@
   addEventListener('resize', () => { resize(); if (reduce) draw(); });
   new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was && !reduce) requestAnimationFrame(draw); }).observe(cv);
 })();
+
+// Cursor spotlight on project tiles
+(() => {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.addEventListener('pointermove', e => {
+    const t = e.target.closest?.('.proj, .mini');
+    if (!t) return;
+    const r = t.getBoundingClientRect();
+    t.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    t.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+})();
+

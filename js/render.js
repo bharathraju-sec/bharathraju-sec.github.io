@@ -126,7 +126,9 @@
       <div class="timeline">${D.experience.map(job).join('')}</div>
     </div></section>`;
 
-  const story = rows => `<div class="case">${rows.map(([k, v]) => `<div><b>${esc(k)}</b>${esc(v)}</div>`).join('')}</div>`;
+  const row = ([k, v]) => `<div><b>${esc(k)}</b>${esc(v)}</div>`;
+  const story = rows => `<div class="case">${row(rows[0])}${rows.length > 1 ? `
+    <details class="case-more"><summary><span class="open-t">Read more</span><span class="close-t">Show less</span></summary>${rows.slice(1).map(row).join('')}</details>` : ''}</div>`;
   const miniFlow = (steps, label) => !steps ? '' :
     `<div class="mini-flow" aria-label="${esc(label)}">${steps.map((s, i) => `<span${i === steps.length - 1 ? ' class="on"' : ''}>${esc(s)}</span>`).join('<em>→</em>')}</div>`;
   // --i orders each step in the animated walk-through (see .flow.live in css/style.css)
@@ -199,8 +201,8 @@
       </div>
       ${D.tools?.length && GFX.toolTile ? `<ul class="tools" aria-label="Tools I use">${D.tools.map(GFX.toolTile).join('')}</ul>` : ''}
       <div class="legend reveal"><span><i class="core"></i>Used day-to-day / in projects</span><span><i></i>Working knowledge</span></div>
-      <div class="matrix reveal">
-        ${D.skills.map(s => `<div class="mrow"><h3>${icon(s.icon)}${esc(s.name)}</h3>${chips(s.tags)}</div>`).join('')}
+      <div class="skill-grid">
+        ${D.skills.map(s => `<div class="scard reveal"><h3>${icon(s.icon)}${esc(s.name)}<em>${s.tags.length}</em></h3>${chips(s.tags)}</div>`).join('')}
       </div>
     </div></section>`;
 
