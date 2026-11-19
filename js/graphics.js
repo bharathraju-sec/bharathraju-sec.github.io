@@ -209,6 +209,45 @@ window.GFX = (() => {
             <text x="296" y="114" class="art-mono" text-anchor="end">offline GPU: ${crack}</text>
           </g>`).join('')}`, 4.5);
     }
+    /* Speech emotion: waveform → MFCC features → emotion probabilities (illustrative). */
+    if (type === 'speech') {
+      const D = 4, cyan = css('--accent-2', '#22d3ee');
+      const bars = Array.from({ length: 22 }, (_, i) => {
+        const x = 16 + i * 5, h = 6 + Math.abs(Math.sin(i * 1.3)) * 22;
+        return `<rect x="${x}" y="${60 - h / 2}" width="3" height="${h}" rx="1.5" fill="${cyan}" opacity=".85">${anim('height', `${h};${h * .35};${h}`, '0;.5;1', 1.2, ` begin="${f(i * .05)}s"`)}${anim('y', `${60 - h / 2};${60 - h * .175};${60 - h / 2}`, '0;.5;1', 1.2, ` begin="${f(i * .05)}s"`)}</rect>`;
+      }).join('');
+      const grid = Array.from({ length: 16 }, (_, i) => `<rect x="${140 + (i % 4) * 9}" y="${42 + Math.floor(i / 4) * 9}" width="7" height="7" rx="1.5" fill="var(--accent)" opacity="${f(.2 + ((i * 7) % 5) / 7)}">${anim('opacity', `.15;${f(.3 + ((i * 3) % 5) / 7)};.15`, '0;.5;1', D, ` begin="${f(i * .08)}s"`)}</rect>`).join('');
+      const emo = [['happy', 'var(--ok)', 46], ['calm', 'var(--accent-2)', 26], ['angry', 'var(--bad)', 12], ['sad', 'var(--muted)', 8]];
+      return frame(`
+        ${bars}
+        <text x="70" y="98" text-anchor="middle" class="art-label">audio</text>
+        <path d="M128 60h8" stroke="var(--line-2)" stroke-width="1.4"/>
+        ${grid}<text x="158" y="98" text-anchor="middle" class="art-label">MFCC</text>
+        <path d="M180 60h10" stroke="var(--line-2)" stroke-width="1.4"/>
+        ${emo.map(([n, c, w], i) => `<text x="196" y="${38 + i * 15}" class="art-mono">${n}</text><rect x="232" y="${32 + i * 15}" width="${w * 1.6}" height="6" rx="3" fill="${c}">${anim('width', `0;0;${w * 1.6};${w * 1.6};0`, '0;.2;.45;.92;1', D)}</rect>`).join('')}
+        <text x="258" y="98" text-anchor="middle" class="art-label">emotion</text>`, 3);
+    }
+
+    /* Smart campus: map with buildings; a GPS dot follows a route to the destination (illustrative). */
+    if (type === 'campus') {
+      const D = 5, ok = css('--ok', '#4f8cff');
+      const blds = [[30, 20, 40, 26], [92, 14, 34, 34], [150, 60, 46, 28], [222, 18, 38, 30], [262, 70, 40, 26], [40, 72, 50, 24]];
+      return frame(`
+        <path d="M0 52H320M118 0V120M210 0V120" stroke="var(--line)" stroke-width="10"/>
+        ${blds.map(([x, y, w, h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="var(--bg)" stroke="var(--line-2)"/>`).join('')}
+        <path id="campusRoute" d="M20 52 H118 V100 H210 V52 H282" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"/>
+        <circle cx="20" cy="52" r="4" fill="var(--muted)"/>
+        <g transform="translate(282 40)"><path d="M0 12s-8-7-8-12a8 8 0 0116 0c0 5-8 12-8 12z" fill="var(--accent)"/><circle cy="0" r="3" fill="var(--bg)"/></g>
+        <circle r="5" fill="${ok}" stroke="#fff" stroke-width="1.5">
+          <animateMotion dur="${D}s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;.8;1"><mpath href="#campusRoute"/></animateMotion>
+        </circle>
+        <circle r="5" fill="none" stroke="${ok}">
+          <animateMotion dur="${D}s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;.8;1"><mpath href="#campusRoute"/></animateMotion>
+          ${anim('r', '5;14', '0;1', 1.2)}${anim('opacity', '.8;0', '0;1', 1.2)}
+        </circle>
+        <text x="282" y="70" text-anchor="middle" class="art-label">library</text>`, 4.2);
+    }
+
     /* DeceptID: consented camera → evidence processing (face + PAD) → policy decision → audit. Illustrative. */
     if (type === 'identity') {
       const D = 4.5, cyan = css('--accent-2', '#22d3ee'), ok = css('--ok', '#4f8cff'), bad = css('--bad', '#f43f5e');

@@ -180,7 +180,7 @@
           <h3>// Earlier projects</h3>
           <div class="earlier-grid">
             ${D.earlierProjects.map(e => `
-              <div class="mini${e.art ? ' has-art' : ''}">
+              <div class="mini${e.art ? ' has-art' : ''}${e.wide ? ' wide' : ''}">
                 ${e.art && GFX.art ? GFX.art(e.art, e) : ''}
                 <div class="ic">${icon(e.icon)}</div>
                 <div><b>${esc(e.title)}</b><p>${esc(e.text)}</p>${chips(e.tags)}${projLink(e.link)}</div>

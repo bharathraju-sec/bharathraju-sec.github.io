@@ -476,7 +476,8 @@ a,button,.tool,.cert{-webkit-tap-highlight-color:transparent;touch-action:manipu
 #heroName.decrypting,#heroName.decrypting .grad{color:transparent;-webkit-text-fill-color:transparent}
 
 /* earlier projects with an illustration (e.g. Password Strength Analyser) */
-.mini.has-art{flex-wrap:wrap;grid-column:1/-1}
+.mini.has-art{flex-wrap:wrap}
+.mini.wide{grid-column:1/-1}
 .mini.has-art .proj-art{flex:0 0 100%;margin:-20px -22px 6px;height:130px;border-radius:12px 12px 0 0}
 .mini .proj-link{margin-top:12px}
 

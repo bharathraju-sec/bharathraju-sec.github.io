@@ -209,14 +209,14 @@ window.PORTFOLIO = {
 
   /* ── Earlier and other software projects ── */
   earlierProjects: [
-    { icon: "shield", title: "Password Strength Analyser", art: "meter",
+    { icon: "shield", title: "Password Strength Analyser", art: "meter", wide: true,
       text: "Client-side password security tool with real-time strength scoring, entropy calculation, pattern detection and estimated cracking times — nothing is sent to a server. Crack times are estimates based on stated assumptions, not guarantees.",
       tags: ["JavaScript", "HTML", "CSS", "Regex", "Jest"],
       link: { url: "https://github.com/bharathraju-sec/password-strength-analyser", text: "View source on GitHub ↗" } },
-    { icon: "mic", title: "Speech Emotion Detection",
+    { icon: "mic", title: "Speech Emotion Detection", art: "speech",
       text: "Machine learning project classifying emotion from speech audio using MFCC and spectral feature extraction, a deep-learning classifier and a Flask-based interface.",
       tags: ["Python", "Librosa", "Deep learning", "Flask"] },
-    { icon: "pin", title: "Smart Campus Navigation",
+    { icon: "pin", title: "Smart Campus Navigation", art: "campus",
       text: "Mobile campus navigation app helping users locate buildings and facilities through GPS location services, map search and campus routing, with a Firebase backend.",
       tags: ["Mobile", "Google Maps API", "GPS", "Firebase"] },
   ],
