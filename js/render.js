@@ -194,7 +194,7 @@
     </div></section>`;
 
   const skills = `
-    <section id="skills" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+    <section id="skills" style="background:rgba(var(--bg-2-rgb,17,26,46),.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
       <div class="sec-head reveal">
         <div class="label">Toolkit</div>
         <h2>Skills &amp; <em>stack</em></h2>
