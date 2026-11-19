@@ -166,8 +166,8 @@
   const h1 = $('#heroName');
   if (h1 && !reduce && !document.hidden) {
     const CH = '01<>/\\{}#$%&*+=?ABCDEF';
-    const layer = h1.cloneNode(true);
-    layer.removeAttribute('id'); layer.setAttribute('aria-hidden', 'true'); layer.className = 'h1-decrypt';
+    const layer = document.createElement('div');   // a div, not a second <h1>
+    layer.innerHTML = h1.innerHTML; layer.setAttribute('aria-hidden', 'true'); layer.className = 'h1-decrypt';
     const decoy = document.createElement('div'); decoy.className = 'h1-layer'; decoy.setAttribute('aria-hidden', 'true'); decoy.appendChild(layer);
     h1.parentNode.appendChild(decoy); h1.classList.add('decrypting');
     const targets = [...layer.childNodes].flatMap(n => n.nodeType === 3 ? [n] : [...n.childNodes].filter(c => c.nodeType === 3));
