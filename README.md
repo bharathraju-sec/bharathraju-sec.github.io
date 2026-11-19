@@ -32,7 +32,7 @@ Diagrams, network maps and dashboards on the site are illustrative graphics, not
 | `index.html` | Page shell, SEO tags and script loading |
 | `resume.pdf` | Résumé served by the "Download résumé" buttons |
 | `portfolio-featured.png` | Open Graph / social preview image (1200×630) |
-| `og-image.png` | Earlier preview image |
+| `og-image.png` | Additional preview image |
 | `sitemap.xml`, `robots.txt` | Search engine files |
 
 ## Run locally
