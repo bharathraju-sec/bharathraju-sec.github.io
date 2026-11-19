@@ -59,8 +59,8 @@
       <a href="${esc(P.resume)}" class="btn" download>Download résumé</a>
       <a href="#contact" class="btn">Get in touch</a>
     </div>`);
-  const term = document.getElementById('term');
-  if (term) term.setAttribute('aria-label', 'Terminal summary: ' + D.terminal.map(l => l.out.replace(/\n/g, ', ')).join('. '));
+  const GFX = window.GFX || {};
+  if (GFX.heroMap) set('heroMap', GFX.heroMap());
 
   /* ── sections ──────────────────────────────── */
   const stats = `
@@ -91,10 +91,10 @@
         <h2>${esc(A.title)}<br><em>${esc(A.titleEm)}</em></h2>
         ${A.paragraphs.map(p => `<p>${rich(p)}</p>`).join('')}
       </div>
-      <aside class="facts reveal" aria-label="Quick facts">
-        <h3>$ cat facts.yml</h3>
-        <dl>${A.facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
-      </aside>
+      <div class="term reveal" id="term" role="img" aria-label="${esc('Terminal summary: ' + D.terminal.map(l => l.out.replace(/\n/g, ', ')).join('. '))}">
+        <div class="term-bar"><b></b><b></b><b></b><span>~/profile — zsh</span></div>
+        <pre id="termText" aria-hidden="true"></pre>
+      </div>
     </div></section>`;
 
   const job = j => j.compact ? `
@@ -117,6 +117,7 @@
   const experience = `
     <section id="experience" style="padding-top:40px"><div class="wrap">
       ${head('Experience', "Where I've", 'worked')}
+      ${D.journey?.length && GFX.journey ? GFX.journey(D.journey) : ''}
       <div class="timeline">${D.experience.map(job).join('')}</div>
     </div></section>`;
 
@@ -151,11 +152,12 @@
       </article>`;
     return `
       <article class="proj reveal">
+        ${p.art && GFX.art ? GFX.art(p.art, p) : ''}
         <span class="num">${pad(i + 1)}</span>
         <div class="kind">${esc(p.kind)}</div>
         <h3>${titleHtml}</h3>
         <div class="meta">${esc(p.meta)}</div>
-        ${miniFlow(p.flow, p.title + ' flow')}
+        ${p.art === 'chain' ? '' : miniFlow(p.flow, p.title + ' flow')}
         ${story(p.story)}
         ${chips(p.tags)}
         ${projLink(p.link)}
@@ -184,8 +186,9 @@
       <div class="sec-head reveal">
         <div class="label">Toolkit</div>
         <h2>Skills &amp; <em>stack</em></h2>
-        <div class="legend"><span><i class="core"></i>Used day-to-day / in projects</span><span><i></i>Working knowledge</span></div>
       </div>
+      ${D.tools?.length && GFX.toolTile ? `<ul class="tools" aria-label="Tools I use">${D.tools.map(GFX.toolTile).join('')}</ul>` : ''}
+      <div class="legend reveal"><span><i class="core"></i>Used day-to-day / in projects</span><span><i></i>Working knowledge</span></div>
       <div class="matrix reveal">
         ${D.skills.map(s => `<div class="mrow"><h3>${icon(s.icon)}${esc(s.name)}</h3>${chips(s.tags)}</div>`).join('')}
       </div>

@@ -6,6 +6,9 @@
  *   e.g. "*Python".
  * - Icons are names from the ICONS list in js/render.js:
  *   network, search, shield, shieldCheck, terminal, alert, chip, tool, code, mic, pin.
+ * - Journey icons (career path graphic): sales, router, cap, field, target.
+ * - Project header art: art: "chain" | "verify" | "meter" (drawn in js/graphics.js).
+ * - Tool logos: keys from js/logos.js (wireshark, kalilinux, cisco, python, …).
  * - Order in each array = order on the page (most recent first).
  */
 window.PORTFOLIO = {
@@ -33,7 +36,37 @@ window.PORTFOLIO = {
     { cmd: "cat role.txt",    out: "Field Network Engineer @ ENbridge IT\nM.IT Cyber Security — Macquarie Uni" },
     { cmd: "ls focus/",       out: "network-security/   incident-response/\nthreat-intel/       agentic-ai-security/" },
     { cmd: "cat certs.txt",   out: "CEH · CCNA · Google Cybersecurity", warn: true },
+    { cmd: "cat stack.txt",   out: "Cisco · Aruba · VeloCloud · Kali · Python" },
     { cmd: "echo $LOCATION",  out: "Sydney, NSW" },
+  ],
+
+  /* ── Career path graphic (left → right). icon: sales, router, cap, field, target ── */
+  journey: [
+    { year: "2014", title: "Sales Executive",        org: "TVS – Prakruthi Mobikes", icon: "sales" },
+    { year: "2021", title: "Network Engineer",       org: "VNews24 Kannada",         icon: "router" },
+    { year: "2025", title: "M.IT Cyber Security",    org: "Macquarie University",    icon: "cap" },
+    { year: "2026", title: "Field Network Engineer", org: "ENbridge IT Services",    icon: "field", current: true },
+    { year: "Next", title: "Security role",          org: "SOC · NetSec · AI security", icon: "target", next: true },
+  ],
+
+  /* ── Logo wall in the Skills section. logo = a key in js/logos.js (leave out for a text tile) ── */
+  tools: [
+    { logo: "wireshark",  name: "Wireshark" },
+    { logo: "kalilinux",  name: "Kali Linux" },
+    { logo: "cisco",      name: "Cisco" },
+    { logo: "burpsuite",  name: "Burp Suite" },
+    { logo: "metasploit", name: "Metasploit" },
+    { name: "Nmap", mono: "NM" },
+    { name: "Nessus", mono: "NS" },
+    { logo: "python",     name: "Python" },
+    { logo: "linux",      name: "Linux" },
+    { logo: "gnubash",    name: "Bash" },
+    { logo: "docker",     name: "Docker" },
+    { logo: "git",        name: "Git" },
+    { logo: "vmware",     name: "VMware" },
+    { logo: "postgresql", name: "PostgreSQL" },
+    { logo: "javascript", name: "JavaScript" },
+    { logo: "openjdk",    name: "Java" },
   ],
 
   /* ── Stats row (numbers count up) ─────────────── */
@@ -69,14 +102,6 @@ window.PORTFOLIO = {
       "I'm a **Cybersecurity postgraduate from Macquarie University** with over three years of professional experience in enterprise network engineering and network security across India and Australia.",
       "Today I work onsite as a field network engineer in Sydney, delivering SD-WAN migrations, deployments and circuit upgrades for banking, government, retail and corporate clients — often as the only engineer in the room, coordinating with remote teams and carriers.",
       "I started in customer-facing sales before moving into engineering, so I pair technical depth with **commercial awareness, risk thinking and clear stakeholder communication**.",
-    ],
-    facts: [
-      ["Now",   "Field Network Engineer, ENbridge IT"],
-      ["Study", "M.IT Cyber Security, Macquarie"],
-      ["Base",  "Sydney, NSW 🇦🇺"],
-      ["Certs", "CEH · CCNA · Google Cybersecurity"],
-      ["Stack", "Cisco · Aruba · VeloCloud · Kali · Python"],
-      ["Into",  "CTFs, IR, LLM & agent security"],
     ],
   },
 
@@ -140,6 +165,7 @@ window.PORTFOLIO = {
       kind: "DFIR · Simulated Investigation · 2026",
       title: "Cyber Incident Investigation & Response",
       meta: "Macquarie University",
+      art: "chain",   // header graphic: chain | verify | meter
       flow: ["Infostealer", "Stolen creds", "Account takeover", "Contain & recover"],
       story: [
         ["What I did", "Analysed authentication logs, audit records and digital evidence to reconstruct attacker activity and assess data exposure."],
@@ -151,6 +177,7 @@ window.PORTFOLIO = {
       kind: "Network Security · Independent · 2026 –",
       title: "EdgeClosure", badge: "In progress",
       meta: "B2B network security platform · planning & architecture",
+      art: "verify",
       flow: ["Read-only collect", "Signed evidence", "Validate controls", "Verify fix"],
       story: [
         ["Goal",   "Evidence-based security assessment for enterprise networks: validate controls, then prove remediation actually happened."],
@@ -162,6 +189,7 @@ window.PORTFOLIO = {
       kind: "AppSec Tool · Open source",
       title: "Password Strength Analyser",
       meta: "Client-side web app · JavaScript",
+      art: "meter",
       flow: ["Keystroke", "Regex rules", "Score + entropy", "Crack-time estimate"],
       story: [
         ["What it does", "Scores a password live as you type — rewarding length and variety, penalising repeats, sequences, years and common or leetspeak passwords."],

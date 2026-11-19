@@ -269,3 +269,84 @@ footer a:hover{color:var(--accent)}
   .reveal{opacity:1;transform:none;transition:none}
   .brand .dot,.cursor,.scroll-hint i{animation:none}
 }
+
+/* ═════════ GRAPHICS ═════════ */
+
+/* hero network map */
+.map-card{margin:0;background:rgba(11,15,20,.9);border:1px solid var(--line-2);border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.8);backdrop-filter:blur(6px)}
+.netmap{display:block;width:100%;height:auto}
+.nm-label{font-family:var(--f-mono);font-size:11px;fill:#8693a1}
+.nm-zone{font-family:var(--f-mono);font-size:9.5px;fill:rgba(92,242,166,.55);letter-spacing:.08em;text-transform:uppercase}
+.map-legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:12px 16px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.map-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:0}
+
+/* career path */
+.journey-path{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;position:relative;margin:0 0 44px;padding:0}
+.journey-path::before{content:"";position:absolute;left:10%;right:10%;top:25px;height:2px;background:linear-gradient(90deg,var(--line-2),var(--accent) 72%,rgba(58,184,255,.5))}
+.journey-path::after{content:"";position:absolute;top:21px;left:10%;width:10px;height:10px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 14px var(--accent-2);animation:travel 7s linear infinite}
+@keyframes travel{0%{left:10%;opacity:0}6%{opacity:1}94%{opacity:1}100%{left:90%;opacity:0}}
+.jp{position:relative;z-index:1;text-align:center;opacity:1}
+.jp-dot{width:52px;height:52px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1.5px solid var(--line-2);transition:transform .25s}
+.jp:hover .jp-dot{transform:scale(1.08)}
+.jp-dot svg{width:22px;height:22px;fill:none;stroke:#c3ccd6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.jp.current .jp-dot{border-color:var(--accent);box-shadow:0 0 0 6px rgba(92,242,166,.12),0 0 24px rgba(92,242,166,.35)}
+.jp.current .jp-dot svg{stroke:var(--accent)}
+.jp.next .jp-dot{border-style:dashed;border-color:var(--accent-2)}
+.jp.next .jp-dot svg{stroke:var(--accent-2)}
+.jp-year{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--accent);margin-bottom:2px}
+.jp.next .jp-year{color:var(--accent-2)}
+.jp b{display:block;font-family:var(--f-head);font-size:15px;font-weight:600;line-height:1.25}
+.jp-org{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+
+/* project header art */
+.proj-art{margin:-32px -30px 22px;height:138px;padding:8px 12px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,rgba(58,184,255,.08),transparent 70%),var(--bg-2)}
+.proj-art svg{width:100%;height:100%;display:block}
+.proj-art + .num{top:152px}
+.art-label{font-family:var(--f-mono);font-size:9.5px;fill:#8693a1}
+.art-tag{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.art-pw{font-family:var(--f-mono);font-size:16px;fill:#c3ccd6;letter-spacing:2px}
+.art-mono{font-family:var(--f-mono);font-size:9px;fill:var(--dim)}
+.proj.in .draw{animation:draw 1.6s .3s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.seg{transform-box:fill-box;transform-origin:left center;transform:scaleX(0)}
+.proj.in .seg{animation:grow .5s ease forwards}
+@keyframes grow{to{transform:scaleX(1)}}
+.blink{animation:blink 1s steps(1) infinite}
+.proj:hover .proj-art{background:radial-gradient(ellipse at 50% 0%,rgba(92,242,166,.1),transparent 70%),var(--bg-2)}
+
+/* tool logo wall */
+.tools{list-style:none;display:grid;grid-template-columns:repeat(8,1fr);gap:12px;margin:0 0 30px;padding:0}
+.tool{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 6px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:12px;color:var(--muted);text-align:center;transition:border-color .2s,transform .2s,color .2s}
+.tool svg{width:30px;height:30px;fill:var(--brand,#8693a1);transition:filter .25s,transform .25s}
+.tool:hover{border-color:var(--line-2);transform:translateY(-3px);color:var(--text)}
+.tool:hover svg{filter:drop-shadow(0 0 10px var(--brand,#5cf2a6));transform:scale(1.08)}
+.tool-mono{width:30px;height:30px;display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;font-weight:500;color:var(--accent);border:1.5px solid rgba(92,242,166,.5);border-radius:8px}
+.legend.reveal{margin:0 0 14px}
+
+/* hexagon certification badges */
+.cert .ic{width:46px;height:52px;border:0;border-radius:0;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:linear-gradient(160deg,rgba(92,242,166,.22),rgba(58,184,255,.1));color:var(--accent)}
+.cert.key .ic{background:linear-gradient(160deg,#5cf2a6,#3ab8ff);color:var(--accent-ink);font-weight:600}
+.cert.key{box-shadow:0 0 32px -14px rgba(92,242,166,.45)}
+.cert{transition:transform .2s,border-color .2s}
+.cert:hover{transform:translateY(-2px);border-color:var(--line-2)}
+
+@media (max-width:1000px){
+  .tools{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:760px){
+  .journey-path{grid-template-columns:1fr;gap:0;margin-bottom:34px}
+  .journey-path::before{left:25px;right:auto;top:26px;bottom:26px;width:2px;height:auto;background:linear-gradient(var(--line-2),var(--accent) 72%,rgba(58,184,255,.5))}
+  .journey-path::after{left:21px;top:26px;animation:travelY 7s linear infinite}
+  @keyframes travelY{0%{top:26px;opacity:0}6%{opacity:1}94%{opacity:1}100%{top:calc(100% - 36px);opacity:0}}
+  .jp{display:grid;grid-template-columns:52px 1fr;column-gap:14px;text-align:left;padding:8px 0;align-items:center}
+  .jp-dot{grid-row:1 / span 3;margin:0}
+  .proj-art{margin:-26px -22px 20px}
+  .proj-art + .num{top:146px}
+  .tool{padding:14px 4px 12px;font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){
+  .journey-path::after{display:none}
+  .draw{stroke-dashoffset:0 !important;animation:none !important}
+  .seg{transform:none !important;animation:none !important}
+  .blink{animation:none}
+}

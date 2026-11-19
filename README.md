@@ -10,7 +10,9 @@ A single static page built with plain JavaScript — no framework, no build step
 | --- | --- |
 | `js/data.js` | ✏️ **All the content** — edit this file to update the site |
 | `js/render.js` | Builds every section of the page from `data.js` |
-| `js/main.js` | Interactions: nav, scroll reveal, counters, terminal typing, network background |
+| `js/graphics.js` | SVG illustrations: hero network map, career path, project art, tool tiles |
+| `js/logos.js` | Tool logos (shape data from [Simple Icons](https://simpleicons.org), CC0) |
+| `js/main.js` | Interactions: nav, scroll reveal, counters, terminal typing, name "decrypt", network background with blocked threats |
 | `css/style.css` | All styles |
 | `index.html` | Page shell, SEO tags and script loading |
 | `resume.pdf` | Résumé served by the "Download résumé" buttons |

@@ -22,8 +22,10 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Bharath Raju Subramani","jobTitle":"Field Network Engineer","worksFor":{"@type":"Organization","name":"ENbridge IT Services"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Macquarie University"},"address":{"@type":"PostalAddress","addressLocality":"Sydney","addressRegion":"NSW","addressCountry":"AU"},"sameAs":["https://linkedin.com/in/rajubha","https://github.com/bharathraju-sec"],"knowsAbout":["Network Security","Incident Response","Threat Intelligence","Vulnerability Assessment","Agentic AI Security","SD-WAN"]}
 </script>
-<!-- Content lives in js/data.js; js/render.js builds the page; js/main.js adds the interactions. -->
+<!-- Content lives in js/data.js; js/graphics.js draws the SVG art; js/render.js builds the page; js/main.js adds the interactions. -->
 <script src="js/data.js" defer></script>
+<script src="js/logos.js" defer></script>
+<script src="js/graphics.js" defer></script>
 <script src="js/render.js" defer></script>
 <script src="js/main.js" defer></script>
 </head>
@@ -44,10 +46,15 @@
   <canvas id="net" aria-hidden="true"></canvas>
   <div class="wrap">
     <div id="heroText"></div>
-    <div class="term" id="term" role="img">
-      <div class="term-bar"><b></b><b></b><b></b><span>~/profile — zsh</span></div>
-      <pre id="termText" aria-hidden="true"></pre>
-    </div>
+    <figure class="map-card">
+      <div class="term-bar"><b></b><b></b><b></b><span>~/topology — live</span></div>
+      <div id="heroMap"></div>
+      <figcaption class="map-legend">
+        <span><i style="background:var(--accent-2)"></i>traffic</span>
+        <span><i style="background:var(--accent)"></i>guardrail checks</span>
+        <span><i style="background:var(--bad)"></i>blocked threat</span>
+      </figcaption>
+    </figure>
   </div>
   <div class="scroll-hint" aria-hidden="true">SCROLL<i></i></div>
 </header>

@@ -52,7 +52,8 @@
     return [head, warn ? `<span class="w">${esc(out)}</span>` : esc(out)];
   });
   const out = $('#termText'), done = '<span class="p">➜</span> <span class="cursor"></span>';
-  if (reduce) out.innerHTML = lines.map(l => l.join('\n')).join('\n\n') + '\n\n' + done;
+  if (!out) { /* no terminal on page */ }
+  else if (reduce) out.innerHTML = lines.map(l => l.join('\n')).join('\n\n') + '\n\n' + done;
   else {
     let html = '', i = 0;
     const typeCmd = (cmd, res) => {
@@ -64,12 +65,40 @@
       step();
     };
     const next = () => { if (i >= lines.length) { out.innerHTML = html + done; return; } typeCmd(...lines[i++]); };
-    setTimeout(next, 600);
+    out.innerHTML = '<span class="cursor"></span>';
+    // start typing when the terminal scrolls into view
+    const tio = new IntersectionObserver(([e]) => { if (e.isIntersecting) { tio.disconnect(); setTimeout(next, 300); } }, {threshold:.4});
+    tio.observe(out);
   }
+
+  // hero name "decrypts" from random glyphs
+  const h1 = $('.hero h1');
+  if (h1 && !reduce && !document.hidden) {
+    const CH = '01<>/\\{}#$%&*+=?ABCDEF';
+    const targets = [...h1.childNodes].flatMap(n => n.nodeType === 3 ? [n] : [...n.childNodes].filter(c => c.nodeType === 3));
+    const finals = targets.map(t => t.nodeValue);
+    const DUR = 1100, t0 = performance.now();
+    const finish = () => targets.forEach((t, k) => t.nodeValue = finals[k]);
+    // time-based, so it always ends on schedule even if the tab was throttled
+    const scramble = now => {
+      const p = Math.min(1, (now - t0) / DUR);
+      if (p >= 1) return finish();
+      targets.forEach((t, k) => {
+        const f = finals[k], done = Math.floor(f.length * p);
+        t.nodeValue = f.split('').map((c, i) => i < done || c === ' ' ? c : CH[Math.random() * CH.length | 0]).join('');
+      });
+      requestAnimationFrame(scramble);
+    };
+    requestAnimationFrame(scramble);
+    setTimeout(finish, DUR + 400);   // safety net
+  }
+
+  // respect reduced motion for SVG (SMIL) animations too
+  if (reduce) $$('svg').forEach(s => s.pauseAnimations && s.pauseAnimations());
 
   // network-topology canvas
   const cv = $('#net'), ctx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2), LINK = 150;
-  let W, H, nodes = [], packets = [], running = true;
+  let W, H, nodes = [], packets = [], rings = [], running = true;
   const resize = () => {
     W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const n = Math.round(Math.min(70, W * H / 22000));
@@ -84,14 +113,33 @@
       if (d < LINK) {
         ctx.strokeStyle = `rgba(92,242,166,${(1 - d / LINK) * .22})`; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        if (!reduce && Math.random() < .0009 && packets.length < 14) packets.push({a, b, t:0});
+        if (!reduce && Math.random() < .0009 && packets.length < 14) {
+          // ~1 in 6 packets is malicious and heads for a hub ("firewall") node
+          const bad = Math.random() < .17 && (a.hub || b.hub);
+          packets.push(bad ? {a: a.hub ? b : a, b: a.hub ? a : b, t:0, bad:true} : {a, b, t:0});
+        }
       }
     }
-    for (const n of nodes) { ctx.fillStyle = n.hub ? '#5cf2a6' : 'rgba(170,190,210,.55)'; ctx.beginPath(); ctx.arc(n.x, n.y, n.hub ? n.r + 1.2 : n.r, 0, 7); ctx.fill(); }
+    for (const n of nodes) {
+      ctx.fillStyle = n.hub ? '#5cf2a6' : 'rgba(170,190,210,.55)'; ctx.beginPath(); ctx.arc(n.x, n.y, n.hub ? n.r + 1.2 : n.r, 0, 7); ctx.fill();
+      if (n.hub) { ctx.strokeStyle = 'rgba(92,242,166,.25)'; ctx.beginPath(); ctx.arc(n.x, n.y, n.r + 5, 0, 7); ctx.stroke(); }
+    }
     packets = packets.filter(p => {
-      p.t += .018; if (p.t >= 1) return false;
-      const x = p.a.x + (p.b.x - p.a.x) * p.t, y = p.a.y + (p.b.y - p.a.y) * p.t;
-      ctx.fillStyle = '#3ab8ff'; ctx.shadowColor = '#3ab8ff'; ctx.shadowBlur = 10; ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+      p.t += p.bad ? .012 : .018;
+      if (p.t >= 1) { if (p.bad) rings.push({x:p.b.x, y:p.b.y, life:1}); return false; }
+      const x = p.a.x + (p.b.x - p.a.x) * p.t, y = p.a.y + (p.b.y - p.a.y) * p.t, c = p.bad ? '#ff6b6b' : '#3ab8ff';
+      ctx.fillStyle = c; ctx.shadowColor = c; ctx.shadowBlur = 10; ctx.beginPath(); ctx.arc(x, y, p.bad ? 2.6 : 2.2, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+      return true;
+    });
+    // blocked-threat effect: shield ring + ✕ at the hub
+    rings = rings.filter(r => {
+      r.life -= .02; if (r.life <= 0) return false;
+      const k = 1 - r.life;
+      ctx.strokeStyle = `rgba(92,242,166,${r.life * .8})`; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(r.x, r.y, 6 + k * 22, 0, 7); ctx.stroke();
+      ctx.strokeStyle = `rgba(255,107,107,${r.life})`; ctx.lineWidth = 2; const s = 4;
+      ctx.beginPath(); ctx.moveTo(r.x - s, r.y - s); ctx.lineTo(r.x + s, r.y + s); ctx.moveTo(r.x + s, r.y - s); ctx.lineTo(r.x - s, r.y + s); ctx.stroke();
+      ctx.lineWidth = 1;
       return true;
     });
     if (running && !reduce) requestAnimationFrame(draw);
