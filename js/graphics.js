@@ -248,6 +248,28 @@ window.GFX = (() => {
         <text x="282" y="70" text-anchor="middle" class="art-label">library</text>`, 4.2);
     }
 
+    /* Face recognition (B.Tech): capture → 128-d encoding → SVM → known / unknown. Illustrative. */
+    if (type === 'faces') {
+      const D = 4.5, cyan = css('--accent-2', '#22d3ee'), ok = css('--ok', '#4f8cff');
+      const enc = Array.from({ length: 12 }, (_, i) => `<rect x="${118 + (i % 4) * 10}" y="${38 + Math.floor(i / 4) * 10}" width="8" height="8" rx="1.5" fill="${cyan}" opacity="${f(.25 + ((i * 5) % 6) / 9)}">${anim('opacity', `.15;${f(.35 + ((i * 3) % 5) / 8)};.15`, '0;.5;1', D, ` begin="${f(i * .07)}s"`)}</rect>`).join('');
+      return frame(`
+        <rect x="18" y="26" width="72" height="68" rx="8" fill="var(--bg)" stroke="var(--line-2)"/>
+        <circle cx="54" cy="52" r="11" fill="none" stroke="var(--muted)" stroke-width="1.6"/>
+        <path d="M36 84c4-9 11-13 18-13s14 4 18 13" fill="none" stroke="var(--muted)" stroke-width="1.6"/>
+        <rect x="38" y="36" width="32" height="34" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.6">${anim('opacity', '0;1;1;0', '0;.2;.85;1', D)}</rect>
+        <text x="54" y="110" text-anchor="middle" class="art-label">webcam</text>
+        <path d="M96 60h14" stroke="var(--line-2)" stroke-width="1.4"/>
+        ${enc}<text x="133" y="110" text-anchor="middle" class="art-label">encoding</text>
+        <path d="M164 60h14" stroke="var(--line-2)" stroke-width="1.4"/>
+        <rect x="182" y="42" width="40" height="36" rx="8" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.4"/>
+        <text x="202" y="64" text-anchor="middle" class="art-mono">SVM</text>
+        <text x="202" y="110" text-anchor="middle" class="art-label">classify</text>
+        <path d="M226 60h12" stroke="var(--line-2)" stroke-width="1.4"/>
+        <g>${anim('opacity', '1;1;0;0;1', '0;.48;.5;.98;1', D)}<rect x="242" y="46" width="64" height="28" rx="6" fill="none" stroke="${ok}"/><text x="274" y="64" text-anchor="middle" class="art-mono" fill="${ok}">known</text></g>
+        <g opacity="0">${anim('opacity', '0;0;1;1;0', '0;.48;.5;.98;1', D)}<rect x="242" y="46" width="64" height="28" rx="6" fill="none" stroke="var(--muted)"/><text x="274" y="64" text-anchor="middle" class="art-mono">unknown</text></g>
+        <text x="274" y="110" text-anchor="middle" class="art-label">result</text>`, 4.2);
+    }
+
     /* DeceptID: consented camera → evidence processing (face + PAD) → policy decision → audit. Illustrative. */
     if (type === 'identity') {
       const D = 4.5, cyan = css('--accent-2', '#22d3ee'), ok = css('--ok', '#4f8cff'), bad = css('--bad', '#f43f5e');

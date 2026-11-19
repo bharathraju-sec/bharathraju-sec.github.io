@@ -219,6 +219,10 @@ window.PORTFOLIO = {
     { icon: "pin", title: "Smart Campus Navigation", art: "campus",
       text: "Mobile campus navigation app helping users locate buildings and facilities through GPS location services, map search and campus routing, with a Firebase backend.",
       tags: ["Mobile", "Google Maps API", "GPS", "Firebase"] },
+    { icon: "face", title: "Face Recognition with SVM", art: "faces",
+      text: "B.Tech final-year project: a webcam face recognition system that enrols people, trains an SVM classifier on 128-dimensional face encodings with a train/test evaluation, and labels new captures as known or unknown. Academic code, no face data published.",
+      tags: ["Python", "OpenCV", "face_recognition", "scikit-learn", "SVM"],
+      link: { url: "https://github.com/bharathraju-sec/face-recognition-svm", text: "View source on GitHub ↗" } },
   ],
 
   /* ── Skills ("*" = core) ──────────────────────── */
