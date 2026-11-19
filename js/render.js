@@ -141,7 +141,8 @@
       <div class="caption">${esc(d.caption)}</div>
     </div>`;
   };
-  const projLink = l => !l ? '' : `<a class="proj-link" href="${esc(l.url)}" ${ext}>${GH}${esc(l.text)}</a>`;
+  const projLink = l => !l ? '' : [].concat(l).map(x =>
+    `<a class="proj-link" href="${esc(x.url)}" ${ext}>${/^https:\/\/github\.com\//.test(x.url) ? GH : ''}${esc(x.text)}</a>`).join(' ');
   const project = (p, i) => {
     const titleHtml = `${esc(p.title)}${p.badge ? ` <span class="badge">${esc(p.badge)}</span>` : ''}`;
     if (p.featured) return `
