@@ -209,6 +209,26 @@ window.GFX = (() => {
             <text x="296" y="114" class="art-mono" text-anchor="end">offline GPU: ${crack}</text>
           </g>`).join('')}`, 4.5);
     }
+    /* DeceptID: consented camera → evidence processing (face + PAD) → policy decision → audit. Illustrative. */
+    if (type === 'identity') {
+      const D = 4.5, cyan = css('--accent-2', '#22d3ee'), ok = css('--ok', '#4f8cff'), bad = css('--bad', '#f43f5e');
+      const box = (x, w, label, g, col) => `<rect x="${x}" y="40" width="${w}" height="40" rx="9" fill="var(--bg)" stroke="${col}" stroke-width="1.4"/>${glyph(g, x + w / 2, 60, 17, col)}<text x="${x + w / 2}" y="98" text-anchor="middle" class="art-label">${label}</text>`;
+      return frame(`
+        <text x="160" y="16" text-anchor="middle" class="art-tag" fill="var(--muted)">illustrative architecture</text>
+        <path id="idp" d="M58 60 L262 60" stroke="var(--line-2)" stroke-width="1.4" stroke-dasharray="3 3"/>
+        ${box(14, 44, 'camera', 'search', 'var(--muted)')}
+        ${box(92, 56, 'face + PAD', 'sales', 'var(--accent-2)')}
+        <rect x="88" y="36" width="64" height="48" rx="12" fill="none" stroke="var(--accent-2)" opacity="0">${anim('opacity', '0;0;.8;0;0', '0;.22;.3;.42;1', D)}</rect>
+        ${box(182, 48, 'policy', 'shield', 'var(--ok)')}
+        <rect x="178" y="36" width="56" height="48" rx="12" fill="none" stroke="var(--ok)" opacity="0">${anim('opacity', '0;0;.85;0;0', '0;.46;.54;.66;1', D)}</rect>
+        ${box(262, 44, 'audit', 'doc', 'var(--muted)')}
+        <circle r="3" fill="${cyan}" opacity="0">
+          <animateMotion dur="${D}s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;.7;1"><mpath href="#idp"/></animateMotion>
+          ${anim('fill', `${cyan};${cyan};${ok};${ok}`, '0;.45;.52;1', D)}
+          ${anim('opacity', '0;1;1;0;0', '0;.03;.68;.74;1', D)}
+        </circle>
+        <text x="206" y="116" text-anchor="middle" class="art-mono" fill="${bad}" opacity="0">spoof → deny${anim('opacity', '0;0;1;1;0;0', '0;.55;.58;.8;.84;1', D)}</text>`, 3.2);
+    }
     return '';
   };
 

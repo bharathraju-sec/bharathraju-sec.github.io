@@ -468,3 +468,18 @@ a,button,.tool,.cert{-webkit-tap-highlight-color:transparent;touch-action:manipu
 .mail .mail-send:active{transform:scale(.97)}
 .mail .mail-send svg{width:16px;height:16px}
 @media (max-width:760px){.mail .mail-send{border-left:0;border-top:1px solid var(--line-2);padding:13px}}
+
+/* ═════════ HERO NAME: decorative decrypt layer over the real h1 ═════════ */
+.h1-wrap{position:relative}
+.h1-layer{position:absolute;inset:0;pointer-events:none}
+.h1-layer .h1-decrypt{margin:0;font-size:clamp(44px,6.8vw,82px);font-weight:700;letter-spacing:-.04em;line-height:1;font-family:var(--f-head)}
+#heroName.decrypting,#heroName.decrypting .grad{color:transparent;-webkit-text-fill-color:transparent}
+
+/* earlier projects with an illustration (e.g. Password Strength Analyser) */
+.mini.has-art{flex-wrap:wrap;grid-column:1/-1}
+.mini.has-art .proj-art{flex:0 0 100%;margin:-20px -22px 6px;height:130px;border-radius:12px 12px 0 0}
+.mini .proj-link{margin-top:12px}
+
+/* credentials: certifications kept separate from training */
+.cred-sub{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.cred-sub ~ .cred-sub{margin-top:22px}

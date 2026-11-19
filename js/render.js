@@ -56,9 +56,9 @@
   /* ── hero ──────────────────────────────────── */
   set('heroText', `
     ${P.status ? `<div class="status"><i></i>${esc(P.status)}</div>` : ''}
-    <h1>${esc(P.firstLine)}<br><span class="grad">${esc(P.secondLine)}</span></h1>
+    <div class="h1-wrap"><h1 id="heroName">${esc(P.firstLine)}<br><span class="grad">${esc(P.secondLine)}</span></h1></div>
     <div class="role">${P.roles.map(r => `<span>${esc(r)}</span>`).join('')}</div>
-    <p class="tagline">${esc(P.tagline)} ${P.taglineStrong ? `<b>${esc(P.taglineStrong)}</b>` : ''}</p>
+    <p class="tagline">${esc(P.tagline)}${P.taglineStrong ? ` <b>${esc(P.taglineStrong)}</b>` : ''}</p>
     <div class="cta">
       <a href="#projects" class="btn primary">View my work →</a>
       <a href="${esc(P.resume)}" class="btn" download>Download résumé</a>
@@ -70,7 +70,7 @@
   /* ── sections ──────────────────────────────── */
   const stats = `
     <div class="stats"><div class="wrap">
-      ${D.stats.map(s => `<div class="stat"><div class="n" data-count="${+s.value}">0${s.suffix ? `<sup>${esc(s.suffix)}</sup>` : ''}</div><div class="t">${esc(s.label)}</div></div>`).join('')}
+      ${D.stats.map(s => `<div class="stat"><div class="n" data-count="${+s.value}">${+s.value}${s.suffix ? `<sup>${esc(s.suffix)}</sup>` : ''}</div><div class="t">${esc(s.label)}</div></div>`).join('')}
     </div></div>`;
 
   const F = D.focus;
@@ -180,9 +180,10 @@
           <h3>// Earlier projects</h3>
           <div class="earlier-grid">
             ${D.earlierProjects.map(e => `
-              <div class="mini">
+              <div class="mini${e.art ? ' has-art' : ''}">
+                ${e.art && GFX.art ? GFX.art(e.art, e) : ''}
                 <div class="ic">${icon(e.icon)}</div>
-                <div><b>${esc(e.title)}</b><p>${esc(e.text)}</p>${chips(e.tags)}</div>
+                <div><b>${esc(e.title)}</b><p>${esc(e.text)}</p>${chips(e.tags)}${projLink(e.link)}</div>
               </div>`).join('')}
           </div>
         </div>` : ''}
@@ -206,8 +207,12 @@
     <section id="credentials"><div class="wrap">
       ${head('Credentials', 'Certifications &', 'education')}
       <div class="cred-grid">
-        <div class="certs">
-          ${D.certifications.map(c => `<div class="cert${c.key ? ' key' : ''} reveal"><div class="ic">${esc(c.abbr)}</div><div><b>${esc(c.name)}</b><span>${esc(c.issuer)}</span></div></div>`).join('')}
+        <div>
+          ${[['Certifications', D.certifications.filter(c => !c.training)], ['Training', D.certifications.filter(c => c.training)]].filter(([, l]) => l.length).map(([t, list]) => `
+            <h3 class="cred-sub reveal">${t}</h3>
+            <div class="certs">
+              ${list.map(c => `<div class="cert${c.key ? ' key' : ''} reveal"><div class="ic">${esc(c.abbr)}</div><div><b>${esc(c.name)}</b><span>${esc(c.issuer)}</span></div></div>`).join('')}
+            </div>`).join('')}
         </div>
         <div class="side">
           ${D.education.map(e => `

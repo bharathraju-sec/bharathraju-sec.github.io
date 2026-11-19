@@ -113,12 +113,21 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.1});
   $$('.reveal').forEach(el => io.observe(el));
 
-  // counters
+  // counters: the HTML already holds the real value; this only replays it as a count-up.
+  // Progress is clamped to [0,1] (rAF timestamps can precede t0) and always ends on the exact target.
   const cio = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return; cio.unobserve(e.target);
-    const el = e.target, end = +el.dataset.count, t0 = performance.now(), dur = reduce ? 0 : 1300;
-    const tick = t => { const p = dur ? Math.min(1, (t - t0) / dur) : 1; el.firstChild.nodeValue = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+    const el = e.target, end = Math.max(0, +el.dataset.count || 0);
+    const set = v => { el.firstChild.nodeValue = String(v); };
+    if (reduce || !end) return set(end);
+    const t0 = performance.now(), dur = 1300;
+    const tick = t => {
+      const p = Math.min(1, Math.max(0, (t - t0) / dur));
+      set(Math.max(0, Math.min(end, Math.round(end * (1 - Math.pow(1 - p, 3))))));
+      if (p < 1) requestAnimationFrame(tick); else set(end);
+    };
     requestAnimationFrame(tick);
+    setTimeout(() => set(end), dur + 600);   // safety net after a paused/background tab
   }), {threshold:.6});
   $$('[data-count]').forEach(el => cio.observe(el));
 
@@ -150,18 +159,25 @@
     tio.observe(out);
   }
 
-  // hero name "decrypts" from random glyphs
-  const h1 = $('.hero h1');
+  // hero name "decrypts" from random glyphs. The real <h1> text is never changed:
+  // a decorative copy (aria-hidden) scrambles on top while the h1 is visually transparent,
+  // so screen readers, crawlers and no-JS visitors always get the real name.
+  const h1 = $('#heroName');
   if (h1 && !reduce && !document.hidden) {
     const CH = '01<>/\\{}#$%&*+=?ABCDEF';
-    const targets = [...h1.childNodes].flatMap(n => n.nodeType === 3 ? [n] : [...n.childNodes].filter(c => c.nodeType === 3));
+    const layer = h1.cloneNode(true);
+    layer.removeAttribute('id'); layer.setAttribute('aria-hidden', 'true'); layer.className = 'h1-decrypt';
+    const decoy = document.createElement('div'); decoy.className = 'h1-layer'; decoy.setAttribute('aria-hidden', 'true'); decoy.appendChild(layer);
+    h1.parentNode.appendChild(decoy); h1.classList.add('decrypting');
+    const targets = [...layer.childNodes].flatMap(n => n.nodeType === 3 ? [n] : [...n.childNodes].filter(c => c.nodeType === 3));
     const finals = targets.map(t => t.nodeValue);
     const DUR = 1100, t0 = performance.now();
-    const finish = () => targets.forEach((t, k) => t.nodeValue = finals[k]);
+    let ended = false;
+    const finish = () => { if (ended) return; ended = true; h1.classList.remove('decrypting'); decoy.remove(); };
     // time-based, so it always ends on schedule even if the tab was throttled
     const scramble = now => {
-      const p = Math.min(1, (now - t0) / DUR);
-      if (p >= 1) return finish();
+      const p = Math.min(1, Math.max(0, (now - t0) / DUR));
+      if (p >= 1 || ended) return finish();
       targets.forEach((t, k) => {
         const f = finals[k], done = Math.floor(f.length * p);
         t.nodeValue = f.split('').map((c, i) => i < done || c === ' ' ? c : CH[Math.random() * CH.length | 0]).join('');
