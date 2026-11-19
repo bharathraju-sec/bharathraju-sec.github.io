@@ -5,7 +5,7 @@
  * - In tag lists, start a tag with "*" to mark it as a core skill (green outline),
  *   e.g. "*Python".
  * - Icons are names from the ICONS list in js/render.js:
- *   network, search, shield, shieldCheck, terminal, alert, chip, tool, code, mic, pin.
+ *   network, search, shield, shieldCheck, terminal, alert, chip, tool, code, mic, pin, people.
  * - Journey icons (career path graphic): sales, router, cap, field, target.
  * - Project header art: art: "chain" | "verify" | "meter" (drawn in js/graphics.js).
  * - Tool logos: keys from js/logos.js (wireshark, kalilinux, cisco, python, …).
@@ -24,7 +24,7 @@ window.PORTFOLIO = {
     taglineStrong: "Three years in enterprise networks, now focused on security.",
     location: "Sydney, NSW",
     email: "bharathrarazu14396@gmail.com",
-    linkedin: "https://linkedin.com/in/rajubha",
+    linkedin: "https://linkedin.com/in/bharathrajusubramani",
     github: "https://github.com/bharathraju-sec",
     resume: "resume.pdf",
     terminalUser: "bharath@sec:~$",
@@ -43,6 +43,7 @@ window.PORTFOLIO = {
   /* ── Career path graphic (left → right). icon: sales, router, cap, field, target ── */
   journey: [
     { year: "2014", title: "Sales Executive",        org: "TVS – Prakruthi Mobikes", icon: "sales" },
+    { year: "2017", title: "B.Tech Computer Science", org: "Himalayan University",   icon: "cap" },
     { year: "2021", title: "Network Engineer",       org: "VNews24 Kannada",         icon: "router" },
     { year: "2025", title: "M.IT Cyber Security",    org: "Macquarie University",    icon: "cap" },
     { year: "2026", title: "Field Network Engineer", org: "ENbridge IT Services",    icon: "field", current: true },
@@ -58,15 +59,15 @@ window.PORTFOLIO = {
     { logo: "metasploit", name: "Metasploit" },
     { name: "Nmap", mono: "NM" },
     { name: "Nessus", mono: "NS" },
+    { name: "Aruba EdgeConnect", mono: "AR" },
+    { name: "VeloCloud", mono: "VC" },
     { logo: "python",     name: "Python" },
     { logo: "linux",      name: "Linux" },
-    { logo: "gnubash",    name: "Bash" },
     { logo: "docker",     name: "Docker" },
     { logo: "git",        name: "Git" },
     { logo: "vmware",     name: "VMware" },
     { logo: "postgresql", name: "PostgreSQL" },
-    { logo: "javascript", name: "JavaScript" },
-    { logo: "openjdk",    name: "Java" },
+    { name: "SQL", mono: "SQ" },
   ],
 
   /* ── Stats row (numbers count up) ─────────────── */
@@ -99,7 +100,7 @@ window.PORTFOLIO = {
   about: {
     title: "Hands-on with the network.", titleEm: "Focused on security.",
     paragraphs: [
-      "I'm a **Cybersecurity postgraduate from Macquarie University** with over three years of professional experience in enterprise network engineering and network security across India and Australia.",
+      "I'm a **Cybersecurity postgraduate from Macquarie University** and Computer Science graduate with over three years of professional experience in enterprise network engineering and security across India and Australia.",
       "Today I work onsite as a field network engineer in Sydney, delivering SD-WAN migrations, deployments and circuit upgrades for banking, government, retail and corporate clients — often as the only engineer in the room, coordinating with remote teams and carriers.",
       "I started in customer-facing sales before moving into engineering, so I pair technical depth with **commercial awareness, risk thinking and clear stakeholder communication**.",
     ],
@@ -110,29 +111,29 @@ window.PORTFOLIO = {
     {
       role: "Field Network Engineer", company: "ENbridge IT Services",
       period: "05/2026 — Present", location: "Sydney, NSW", current: true,
-      highlight: { label: "IMPACT", text: "Caught an asset-identification discrepancy during decommissioning, preventing removal of the wrong network equipment." },
+      highlight: { label: "IMPACT", text: "Identified and resolved an asset serial number discrepancy during decommissioning, preventing the removal of incorrect network equipment." },
       bullets: [
         "Delivered 20+ enterprise infrastructure assignments across banking, government, retail and corporate environments — SD-WAN migrations, network deployments and circuit upgrades.",
         "Installed, migrated and troubleshot Cisco ISR, HPE Aruba EdgeConnect and VMware VeloCloud for secure connectivity and service continuity.",
-        "Worked independently onsite, coordinating with remote engineering teams, AT&T DTAC and client stakeholders to close out deliverables.",
+        "Coordinated independently with remote engineering teams, AT&T DTAC and client stakeholders to resolve technical issues, perform secure device resets and complete project deliverables.",
       ],
-      tags: ["SD-WAN", "Cisco ISR", "Aruba EdgeConnect", "VMware VeloCloud", "Secure decommissioning"],
+      tags: ["SD-WAN", "Cisco ISR", "Aruba EdgeConnect", "VMware VeloCloud", "Secure device resets", "Decommissioning"],
     },
     {
       role: "Network Engineer", company: "VNews24 Kannada",
       period: "09/2021 — 06/2024", location: "Bengaluru, India",
-      highlight: { label: "SCALE", text: "Kept a live broadcast newsroom online — ~100 staff, 150 computers and eight Windows Servers — with a two-person team." },
+      highlight: { label: "SCALE", text: "Kept a live broadcast newsroom online — ~100 employees, 150 computers and 8 Windows Servers — within a 2-member technical team." },
       bullets: [
-        "Administered Cisco firewalls, routers, switches and load balancers to support network security and availability.",
-        "Resolved connectivity issues, hardware faults and performance problems to minimise disruption to broadcast operations.",
-        "Ran hardware replacements, firmware upgrades and infrastructure improvements to strengthen security and business continuity.",
+        "Administered Cisco firewalls, routers, switches and load balancer infrastructure, supporting network security and service availability.",
+        "Resolved connectivity issues, hardware faults and network performance problems, minimising operational disruptions.",
+        "Delivered hardware replacements, firmware upgrades and infrastructure improvements, strengthening security and business continuity.",
       ],
       tags: ["Cisco firewalls", "Routing & switching", "Load balancing", "Windows Server", "Firmware patching"],
     },
     {
       role: "Sales Executive", company: "TVS – Prakruthi Mobikes",
       period: "08/2014 — 04/2017", location: "Bengaluru", compact: true,
-      summary: "Hit monthly targets in an eight-person team and built lasting customer relationships — where I learned to explain things clearly and own outcomes.",
+      summary: "Achieved 100% of monthly sales targets, acquiring new customers through product consultations, and worked in an 8-member team to resolve enquiries and improve service delivery.",
     },
   ],
 
@@ -145,8 +146,8 @@ window.PORTFOLIO = {
       meta: "Agentic AI Penetration Testing · Macquarie University",
       story: [
         ["Problem",    "AI agents that read untrusted content and call tools can be hijacked by instructions hidden in that content."],
-        ["What I did", "Co-developed a prototype with policy enforcement, tool authorisation and runtime safeguards against indirect prompt injection."],
-        ["Result",     "Tested through controlled attack simulations, documenting blocked attacks, legitimate task outcomes and system limitations."],
+        ["What I did", "Collaborated on an agentic AI security prototype with policy enforcement, tool authorisation and safeguards against indirect prompt injection."],
+        ["Result",     "Evaluated the controls through 2 documented demonstrations — confirming an unauthorised action was blocked, and identifying limitations in legitimate task execution."],
       ],
       tags: ["*Prompt injection", "*Tool authorisation", "LLM security", "Guardrails", "Python"],
       diagram: {
@@ -168,8 +169,8 @@ window.PORTFOLIO = {
       art: "chain",   // header graphic: chain | verify | meter
       flow: ["Infostealer", "Stolen creds", "Account takeover", "Contain & recover"],
       story: [
-        ["What I did", "Analysed authentication logs, audit records and digital evidence to reconstruct attacker activity and assess data exposure."],
-        ["Result",     "An incident response plan covering containment, recovery, evidence preservation and Australian regulatory obligations."],
+        ["What I did", "Investigated a simulated infostealer-driven account takeover — analysing authentication logs and audit records to reconstruct attacker activity and identify potential exposure of ~41,200 candidate profiles."],
+        ["Result",     "An incident response plan covering containment, recovery, evidence preservation, incident coordination and Australian regulatory obligations."],
       ],
       tags: ["*Incident response", "Log analysis", "NIST SP 800-61", "MITRE ATT&CK"],
     },
@@ -213,12 +214,12 @@ window.PORTFOLIO = {
   skills: [
     { icon: "network",  name: "Networking",          tags: ["*SD-WAN", "*Routing & Switching", "*LAN/WAN", "*Network Troubleshooting", "TCP/IP", "VLANs", "Subnetting", "DNS", "DHCP", "VPNs", "Load Balancing"] },
     { icon: "terminal", name: "Enterprise tech",     tags: ["*Cisco ISR", "*Cisco Firewalls", "*HPE Aruba EdgeConnect", "*VMware VeloCloud", "Cisco Switches", "Windows Server"] },
-    { icon: "shield",   name: "Network security",    tags: ["*Firewall Administration", "*Secure Decommissioning", "Access Control", "Network Segmentation", "Security Patching"] },
-    { icon: "alert",    name: "Cybersecurity",       tags: ["*Incident Response", "*Vulnerability Assessment", "Penetration Testing", "Threat Modelling", "Security Risk Assessment", "Cryptography"] },
-    { icon: "search",   name: "Security operations", tags: ["*Log Analysis", "Threat Intelligence", "Threat Analysis", "Security Monitoring", "SIEM Fundamentals"] },
+    { icon: "shield",   name: "Network security",    tags: ["*Firewall Administration", "*Secure Device Decommissioning", "Access Control", "Network Segmentation", "Security Patching"] },
+    { icon: "alert",    name: "Cybersecurity",       tags: ["*Incident Response", "*Vulnerability Assessment", "Penetration Testing", "Threat Modelling", "Risk Assessment", "Cryptography"] },
+    { icon: "search",   name: "Security operations", tags: ["*Log Analysis", "*MITRE ATT&CK", "Threat Intelligence", "Security Monitoring", "SIEM Fundamentals", "NIST CSF 2.0", "NIST SP 800-61"] },
     { icon: "chip",     name: "AI security",         tags: ["*Agentic AI Security", "*Prompt Injection", "*Tool Authorisation", "LLM Security", "Security Guardrails"] },
-    { icon: "tool",     name: "Tools & frameworks",  tags: ["*Wireshark", "*Kali Linux", "Nmap", "Nessus", "Burp Suite", "Metasploit", "*MITRE ATT&CK", "NIST CSF 2.0", "NIST SP 800-61"] },
-    { icon: "code",     name: "Code & platforms",    tags: ["*Python", "*Linux", "Java", "JavaScript", "SQL", "Git", "Docker", "VMware", "PostgreSQL", "REST APIs"] },
+    { icon: "tool",     name: "Tools & platforms",   tags: ["*Wireshark", "*Kali Linux", "*Python", "*Linux", "Nessus", "Nmap", "Burp Suite", "Metasploit", "SQL", "Git", "Docker", "VMware", "PostgreSQL", "REST APIs"] },
+    { icon: "people",   name: "Professional",        tags: ["Stakeholder Communication", "Client Relationship Management", "Project Delivery", "Team Collaboration", "Risk Awareness", "Issue Escalation", "Problem-Solving", "Technical Documentation"] },
   ],
 
   /* ── Credentials ──────────────────────────────── */
@@ -232,6 +233,7 @@ window.PORTFOLIO = {
   ],
   education: [
     { period: "2025 — 2026", degree: "Master of Information Technology — Cyber Security", school: "Macquarie University · Sydney, Australia" },
+    { period: "2017 — 2021", degree: "Bachelor of Technology — Computer Science", school: "Himalayan University · India" },
   ],
   activities: [
     "Capture the Flag challenges, cybersecurity research and technical presentations.",
@@ -241,5 +243,6 @@ window.PORTFOLIO = {
   /* ── Contact ──────────────────────────────────── */
   contact: {
     lede: "Hiring for a security, SOC or network security role in Australia — or want to talk agentic AI security? My inbox is open.",
+    subject: "Hello Bharath — via your portfolio",   // pre-filled subject for Send email
   },
 };

@@ -34,6 +34,10 @@
     mic: '<path d="M12 3a3 3 0 013 3v6a3 3 0 01-6 0V6a3 3 0 013-3zM5 11a7 7 0 0014 0M12 18v3"/>',
     pin: '<path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>',
     download: '<path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    external: '<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',
+    copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h3"/>',
+    people: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0113 0M16 4.5a3.5 3.5 0 010 7M18 20a6.5 6.5 0 00-2.5-5.1"/>',
   };
   const icon = name => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">${ICONS[name] || ICONS.shield}</svg>`;
   const GH = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .5z"/></svg>';
@@ -46,6 +50,7 @@
   const NAV = [['focus', 'Focus'], ['about', 'About'], ['experience', 'Experience'], ['projects', 'Projects'], ['skills', 'Skills'], ['credentials', 'Credentials'], ['contact', 'Contact']];
   set('brand', `<span class="dot"></span>${esc(P.terminalUser)}`);
   set('links', NAV.map(([id, t]) => `<a href="#${id}">${t}</a>`).join(''));
+  set('sheetLinks', NAV.map(([id, t]) => `<a href="#${id}">${t}</a>`).join(''));
   document.querySelectorAll('[data-resume]').forEach(a => a.setAttribute('href', P.resume));
 
   /* ── hero ──────────────────────────────────── */
@@ -124,16 +129,19 @@
   const story = rows => `<div class="case">${rows.map(([k, v]) => `<div><b>${esc(k)}</b>${esc(v)}</div>`).join('')}</div>`;
   const miniFlow = (steps, label) => !steps ? '' :
     `<div class="mini-flow" aria-label="${esc(label)}">${steps.map((s, i) => `<span${i === steps.length - 1 ? ' class="on"' : ''}>${esc(s)}</span>`).join('<em>→</em>')}</div>`;
-  const diagram = d => `
-    <div class="flow" aria-label="${esc(d.label)}">
-      ${d.steps.map(s => `<div class="row"><div class="node${s.gate ? ' gate' : ''}">${esc(s.text)}<small>${esc(s.tag)}</small></div></div>`).join('<div class="arrow"></div>')}
-      <div class="arrow"></div>
+  // --i orders each step in the animated walk-through (see .flow.live in css/style.css)
+  const diagram = d => {
+    const n = d.steps.length;
+    return `
+    <div class="flow" aria-label="${esc(d.label)}" style="--n:${n}">
+      ${d.steps.map((s, i) => `<div class="row"><div class="node fstep${s.gate ? ' gate' : ''}" style="--i:${i}">${esc(s.text)}<small>${esc(s.tag)}</small></div></div><div class="arrow" style="--i:${i}"></div>`).join('')}
       <div class="split">
-        <div class="node gate">${esc(d.allow.text)}<small>${esc(d.allow.tag)}</small></div>
-        <div class="node bad">${esc(d.block.text)}<small>${esc(d.block.tag)}</small></div>
+        <div class="node gate fallow">${esc(d.allow.text)}<small>${esc(d.allow.tag)}</small></div>
+        <div class="node bad fblock">${esc(d.block.text)}<small>${esc(d.block.tag)}</small></div>
       </div>
       <div class="caption">${esc(d.caption)}</div>
     </div>`;
+  };
   const projLink = l => !l ? '' : `<a class="proj-link" href="${esc(l.url)}" ${ext}>${GH}${esc(l.text)}</a>`;
   const project = (p, i) => {
     const titleHtml = `${esc(p.title)}${p.badge ? ` <span class="badge">${esc(p.badge)}</span>` : ''}`;
@@ -217,14 +225,17 @@
       </div>
     </div></section>`;
 
+  // "Send email" opens the visitor's mail app directly, with the subject pre-filled
+  const subj = encodeURIComponent(D.contact.subject || `Hello ${P.firstLine.split(' ')[0]}`);
+  const mailto = `mailto:${esc(P.email)}?subject=${subj}`;
   const contact = `
     <section class="contact" id="contact"><div class="wrap reveal">
       <div class="label">Contact</div>
       <h2>Let's <em>connect</em></h2>
       <p class="lede">${esc(D.contact.lede)}</p>
       <div class="mail">
-        <a href="mailto:${esc(P.email)}" id="mailLink">${esc(P.email)}</a>
-        <button type="button" id="copyBtn" aria-live="polite">Copy</button>
+        <a href="${mailto}" id="mailLink">${esc(P.email)}</a>
+        <a href="${mailto}" class="mail-send">${icon('mail')}Send email</a>
       </div>
       <div class="socials">
         <a href="${esc(P.linkedin)}" ${ext}>${LI}LinkedIn</a>

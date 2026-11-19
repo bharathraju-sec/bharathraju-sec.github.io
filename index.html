@@ -6,21 +6,20 @@
 <title>Bharath Raju Subramani — Cybersecurity &amp; Network Engineering</title>
 <meta name="description" content="Cybersecurity postgraduate (Macquarie University) and field network engineer in Sydney. Network security, incident response, threat intelligence and agentic AI security.">
 <meta name="author" content="Bharath Raju Subramani">
-<meta name="theme-color" content="#07090c">
+<meta name="theme-color" content="#0a0f1f">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bharath Raju Subramani — Cybersecurity & Network Engineering">
 <meta property="og:description" content="From routers to AI agents: network security, incident response and agentic AI security. Sydney, NSW.">
-<!-- After deploying on Vercel, add your final URL here:
-<meta property="og:url" content="https://YOUR-SITE.vercel.app/">
-<link rel="canonical" href="https://YOUR-SITE.vercel.app/"> -->
+<meta property="og:url" content="https://bharathraju.vercel.app/">
+<link rel="canonical" href="https://bharathraju.vercel.app/">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307090c'/%3E%3Cpath d='M32 10l18 8v13c0 11-7.7 19.6-18 23-10.3-3.4-18-12-18-23V18z' fill='none' stroke='%235cf2a6' stroke-width='4'/%3E%3Ccircle cx='32' cy='31' r='5' fill='%235cf2a6'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0f1f'/%3E%3Cpath d='M32 10l18 8v13c0 11-7.7 19.6-18 23-10.3-3.4-18-12-18-23V18z' fill='none' stroke='%23f59e0b' stroke-width='4'/%3E%3Ccircle cx='32' cy='31' r='5' fill='%23f59e0b'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Bharath Raju Subramani","jobTitle":"Field Network Engineer","worksFor":{"@type":"Organization","name":"ENbridge IT Services"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Macquarie University"},"address":{"@type":"PostalAddress","addressLocality":"Sydney","addressRegion":"NSW","addressCountry":"AU"},"sameAs":["https://linkedin.com/in/rajubha","https://github.com/bharathraju-sec"],"knowsAbout":["Network Security","Incident Response","Threat Intelligence","Vulnerability Assessment","Agentic AI Security","SD-WAN"]}
+{"@context":"https://schema.org","@type":"Person","name":"Bharath Raju Subramani","jobTitle":"Field Network Engineer","worksFor":{"@type":"Organization","name":"ENbridge IT Services"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Macquarie University"},{"@type":"CollegeOrUniversity","name":"Himalayan University"}],"address":{"@type":"PostalAddress","addressLocality":"Sydney","addressRegion":"NSW","addressCountry":"AU"},"url":"https://bharathraju.vercel.app/","sameAs":["https://linkedin.com/in/bharathrajusubramani","https://github.com/bharathraju-sec"],"knowsAbout":["Network Security","Incident Response","Threat Intelligence","Vulnerability Assessment","Agentic AI Security","SD-WAN"]}
 </script>
 <!-- Content lives in js/data.js; js/graphics.js draws the SVG art; js/render.js builds the page; js/main.js adds the interactions. -->
 <script src="js/data.js" defer></script>
@@ -37,10 +36,22 @@
     <a href="#top" class="brand" id="brand"></a>
     <div class="links" id="links"></div>
     <a href="resume.pdf" class="btn" data-resume download>Résumé ↓</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="links">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="sheet" aria-haspopup="dialog">☰</button>
   </div>
   <div class="progress" id="progress"></div>
 </nav>
+
+<!-- Mobile menu: a sheet you can drag down to dismiss -->
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu" tabindex="-1" hidden>
+  <div class="grabber" aria-hidden="true"></div>
+  <div class="sheet-title">Menu</div>
+  <nav class="sheet-links" id="sheetLinks" aria-label="Sections"></nav>
+  <div class="sheet-actions">
+    <a href="resume.pdf" class="btn primary" data-resume download>Résumé ↓</a>
+    <a href="#contact" class="btn" id="sheetContact">Contact</a>
+  </div>
+</div>
 
 <header class="hero" id="top">
   <canvas id="net" aria-hidden="true"></canvas>
@@ -51,7 +62,7 @@
       <div id="heroMap"></div>
       <figcaption class="map-legend">
         <span><i style="background:var(--accent-2)"></i>traffic</span>
-        <span><i style="background:var(--accent)"></i>guardrail checks</span>
+        <span><i style="background:var(--ok)"></i>guardrail checks</span>
         <span><i style="background:var(--bad)"></i>blocked threat</span>
       </figcaption>
     </figure>

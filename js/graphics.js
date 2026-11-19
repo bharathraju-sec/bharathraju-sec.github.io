@@ -47,35 +47,35 @@ window.GFX = (() => {
     const node = (k) => {
       const n = N[k], r = n.key ? 26 : 22;
       const stroke = n.bad ? 'var(--bad)' : n.key ? 'var(--accent)' : 'var(--line-2)';
-      const color = n.bad ? 'var(--bad)' : n.key ? 'var(--accent)' : '#c3ccd6';
+      const color = n.bad ? 'var(--bad)' : n.key ? 'var(--accent)' : 'var(--soft)';
       return `
         <g class="nm-node${n.key ? ' key' : ''}${n.bad ? ' bad' : ''}">
           ${n.key ? `<circle cx="${n.x}" cy="${n.y}" r="${r}" fill="none" stroke="var(--accent)" opacity=".5"><animate attributeName="r" values="${r};${r + 14}" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0" dur="2.4s" repeatCount="indefinite"/></circle>` : ''}
-          ${k === 'agent' ? `<circle cx="${n.x}" cy="${n.y}" r="${r + 8}" fill="none" stroke="var(--accent)" stroke-dasharray="3 4" opacity=".7"><animateTransform attributeName="transform" type="rotate" from="0 ${n.x} ${n.y}" to="360 ${n.x} ${n.y}" dur="14s" repeatCount="indefinite"/></circle>` : ''}
+          ${k === 'agent' ? `<circle cx="${n.x}" cy="${n.y}" r="${r + 8}" fill="none" stroke="var(--ok)" stroke-dasharray="3 4" opacity=".7"><animateTransform attributeName="transform" type="rotate" from="0 ${n.x} ${n.y}" to="360 ${n.x} ${n.y}" dur="14s" repeatCount="indefinite"/></circle>` : ''}
           <circle cx="${n.x}" cy="${n.y}" r="${r}" fill="var(--card)" stroke="${stroke}" stroke-width="1.5"/>
           ${glyph(n.g, n.x, n.y, n.key ? 24 : 20, color)}
           <text x="${n.x}" y="${n.y + r + 16}" text-anchor="middle" class="nm-label">${esc(n.label)}</text>
         </g>`;
     };
-    const packet = (id, dur, begin, color = '#3ab8ff', rev = false) =>
+    const packet = (id, dur, begin, color = 'var(--accent-2)', rev = false) =>
       `<circle r="3.2" fill="${color}" filter="url(#nmGlow)"><animateMotion dur="${dur}s" begin="${begin}s" repeatCount="indefinite"${rev ? ' keyPoints="1;0" keyTimes="0;1" calcMode="linear"' : ''}><mpath href="#${id}"/></animateMotion></circle>`;
 
     return `
       <svg class="netmap" viewBox="0 0 480 400" role="img" aria-label="Illustration: a network map. Traffic flows from the internet through a firewall and SD-WAN edge to a branch, Sydney HQ and a data centre. An AI agent connects through guardrails, and an incoming threat is blocked at the firewall.">
         <defs>
-          <pattern id="nmDots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1b232d"/></pattern>
+          <pattern id="nmDots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="var(--line)"/></pattern>
           <filter id="nmGlow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          <linearGradient id="nmLink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5cf2a6" stop-opacity=".55"/><stop offset="1" stop-color="#3ab8ff" stop-opacity=".35"/></linearGradient>
+          <linearGradient id="nmLink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--ok)" stop-opacity=".6"/><stop offset="1" stop-color="var(--accent-2)" stop-opacity=".4"/></linearGradient>
         </defs>
         <rect width="480" height="400" fill="url(#nmDots)"/>
-        <rect x="150" y="196" width="180" height="186" rx="16" fill="rgba(92,242,166,.035)" stroke="rgba(92,242,166,.18)" stroke-dasharray="4 5"/>
+        <rect x="150" y="196" width="180" height="186" rx="16" fill="rgba(var(--ok-rgb),.05)" stroke="rgba(var(--ok-rgb),.28)" stroke-dasharray="4 5"/>
         <text x="320" y="214" text-anchor="end" class="nm-zone">protected network</text>
         ${links.map(([id, a, b]) => `<path id="${id}" d="${path(a, b)}" stroke="url(#nmLink)" stroke-width="1.6" fill="none"/>`).join('')}
         <path id="lt" d="M84 131 L212 140" stroke="var(--bad)" stroke-width="1.6" stroke-dasharray="5 5" fill="none" opacity=".8">
           <animate attributeName="stroke-dashoffset" from="20" to="0" dur="1s" repeatCount="indefinite"/>
         </path>
         ${packet('l1', 2.2, 0)}${packet('l2', 2.2, .6)}${packet('l3', 2.6, 1.1)}${packet('l4', 2.4, 1.4)}${packet('l5', 2.6, .9)}
-        ${packet('l6', 2.8, .3, '#5cf2a6')}${packet('l2', 2.2, 1.7, '#5cf2a6', true)}
+        ${packet('l6', 2.8, .3, 'var(--ok)')}${packet('l2', 2.2, 1.7, 'var(--ok)', true)}
         <circle r="3.4" fill="var(--bad)" filter="url(#nmGlow)">
           <animateMotion dur="1.8s" repeatCount="indefinite"><mpath href="#lt"/></animateMotion>
           <animate attributeName="opacity" values="1;1;0" keyTimes="0;.85;1" dur="1.8s" repeatCount="indefinite"/>
@@ -88,7 +88,7 @@ window.GFX = (() => {
 
   /* ── Career path ─────────────────────────────────────────── */
   const journey = items => `
-    <ol class="journey-path" aria-label="Career path">
+    <ol class="journey-path" aria-label="Career path" style="--n:${items.length}">
       ${items.map(j => `
         <li class="jp${j.current ? ' current' : ''}${j.next ? ' next' : ''} reveal">
           <div class="jp-dot"><svg viewBox="0 0 24 24" aria-hidden="true">${G[j.icon] || G.target}</svg></div>
@@ -107,48 +107,107 @@ window.GFX = (() => {
     for (let k = 1; k < w.length; k++) { const d = Math.abs(w.slice(0, k).join(' ').length - w.slice(k).join(' ').length); if (d < diff) { diff = d; best = k; } }
     return [w.slice(0, best).join(' '), w.slice(best).join(' ')];
   };
+  // Palette colours for SMIL <animate values="…">, which can't read CSS variables.
+  const css = (name, fallback) => (getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback);
+  const f = n => +n.toFixed(4);
+  // Each illustration loops while on screen (js/main.js plays/pauses them).
+  // data-rest = the moment shown as a still frame for reduced-motion visitors.
   const art = (type, p) => {
-    const frame = inner => `<div class="proj-art" aria-hidden="true"><svg viewBox="0 0 320 120" preserveAspectRatio="xMidYMid meet">${inner}</svg></div>`;
+    const frame = (inner, rest) => `<div class="proj-art" aria-hidden="true"><svg viewBox="0 0 320 120" preserveAspectRatio="xMidYMid meet" data-rest="${rest}">${inner}</svg></div>`;
+    const anim = (attr, values, keyTimes, dur, extra = '') =>
+      `<animate attributeName="${attr}" values="${values}" keyTimes="${keyTimes}" dur="${dur}s" repeatCount="indefinite" calcMode="linear"${extra}/>`;
+
+    /* Attack chain: a packet moves from compromise to containment; each stage pulses as it's reached. */
     if (type === 'chain') {
+      const D = 4.5;
       const steps = (p.flow || []).slice(0, 4);
-      const cols = ['var(--bad)', '#ff8f6b', 'var(--warn)', 'var(--accent)'];
+      const hex = [css('--bad', '#f43f5e'), '#fb923c', css('--warn', '#fbbf24'), css('--ok', '#4f8cff')];
+      const cols = ['var(--bad)', '#fb923c', 'var(--warn)', 'var(--ok)'];
       const gl = ['bug', 'lock', 'sales', 'shield'];
       const xs = steps.map((_, i) => 40 + i * (240 / Math.max(1, steps.length - 1)));
+      const travel = .7;                                   // share of the cycle the packet is moving
+      const at = i => travel * i / Math.max(1, steps.length - 1);
       return frame(`
-        <path d="M${xs[0]} 50 L${xs[xs.length - 1]} 50" stroke="#28333f" stroke-width="2"/>
+        <path d="M${xs[0]} 50 L${xs[xs.length - 1]} 50" stroke="var(--line-2)" stroke-width="2"/>
         <path d="M${xs[0]} 50 L${xs[xs.length - 1]} 50" stroke="url(#chainG)" stroke-width="2" stroke-dasharray="240" stroke-dashoffset="240" class="draw"/>
-        <defs><linearGradient id="chainG"><stop offset="0" stop-color="#ff6b6b"/><stop offset=".6" stop-color="#ffb547"/><stop offset="1" stop-color="#5cf2a6"/></linearGradient></defs>
+        <defs><linearGradient id="chainG"><stop offset="0" stop-color="var(--bad)"/><stop offset=".6" stop-color="var(--warn)"/><stop offset="1" stop-color="var(--ok)"/></linearGradient></defs>
         ${steps.map((s, i) => `
+          <circle cx="${xs[i]}" cy="50" r="17" fill="none" stroke="${cols[i]}" stroke-width="1.6" opacity="0">
+            <animate attributeName="r" values="17;28;28" keyTimes="0;.14;1" dur="${D}s" begin="${f(at(i) * D)}s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".9;0;0" keyTimes="0;.14;1" dur="${D}s" begin="${f(at(i) * D)}s" repeatCount="indefinite"/>
+          </circle>
           <circle cx="${xs[i]}" cy="50" r="17" fill="var(--bg)" stroke="${cols[i]}" stroke-width="1.6"/>
           ${glyph(gl[i], xs[i], 50, 16, cols[i])}
           <text x="${xs[i]}" y="84" text-anchor="middle" class="art-label">${twoLines(s).map((l, k) => `<tspan x="${xs[i]}" dy="${k ? 12 : 0}">${esc(l)}</tspan>`).join('')}</text>`).join('')}
+        <circle r="4.2" fill="${hex[0]}" opacity="0">
+          <animateMotion dur="${D}s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;${travel};1" path="M${xs[0]} 50 L${xs[xs.length - 1]} 50"/>
+          ${anim('fill', hex.join(';') + ';' + hex[3], steps.map((_, i) => f(at(i))).join(';') + ';1', D)}
+          ${anim('opacity', '0;1;1;0;0', `0;.03;${travel - .02};${travel + .06};1`, D)}
+        </circle>
         <text x="${xs[0]}" y="16" class="art-tag" fill="var(--bad)">attack</text>
-        <text x="${xs[xs.length - 1]}" y="16" class="art-tag" text-anchor="end" fill="var(--accent)">response</text>`);
+        <text x="${xs[xs.length - 1]}" y="16" class="art-tag" text-anchor="end" fill="var(--ok)">response</text>`, 4.3);
     }
+
+    /* EdgeClosure: device data flows into a read-only collector, then into signed evidence. */
     if (type === 'verify') {
+      const D = 4;
+      const cyan = css('--accent-2', '#22d3ee');
       const dev = [[34, 28], [34, 60], [34, 92]];
+      const lines = [[244, 40, 32], [244, 50, 26], [244, 60, 30], [244, 70, 20]];
       return frame(`
-        ${dev.map(([x, y], i) => `<rect x="${x - 16}" y="${y - 11}" width="32" height="22" rx="5" fill="var(--bg)" stroke="#28333f"/>${glyph(i === 1 ? 'shield' : 'router', x, y, 14, '#8693a1')}<path d="M${x + 16} ${y} C110 ${y} 110 60 134 60" stroke="#28333f" stroke-width="1.4" fill="none" stroke-dasharray="3 3"/>`).join('')}
+        ${dev.map(([x, y], i) => `<rect x="${x - 16}" y="${y - 11}" width="32" height="22" rx="5" fill="var(--bg)" stroke="var(--line-2)"/>${glyph(i === 1 ? 'shield' : 'router', x, y, 14, 'var(--muted)')}<path id="vfy${i}" d="M${x + 16} ${y} C110 ${y} 110 60 134 60" stroke="var(--line-2)" stroke-width="1.4" fill="none" stroke-dasharray="3 3"/>`).join('')}
+        ${dev.map((_, i) => `<circle r="2.8" fill="${cyan}" opacity="0">
+          <animateMotion dur="${D}s" begin="${i * .22}s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;.28;1"><mpath href="#vfy${i}"/></animateMotion>
+          ${anim('opacity', '0;1;1;0;0', '0;.02;.26;.29;1', D, ` begin="${i * .22}s"`)}
+        </circle>`).join('')}
         <text x="34" y="116" text-anchor="middle" class="art-label">devices</text>
         <rect x="134" y="40" width="58" height="40" rx="9" fill="var(--bg)" stroke="var(--accent-2)" stroke-width="1.4"/>
+        <rect x="130" y="36" width="66" height="48" rx="12" fill="none" stroke="var(--accent-2)" stroke-width="1.2" opacity="0">${anim('opacity', '0;0;.8;0;0', '0;.3;.38;.52;1', D)}</rect>
         ${glyph('search', 163, 60, 18, 'var(--accent-2)')}
         <text x="163" y="98" text-anchor="middle" class="art-label">read-only</text>
         <path d="M192 60 L226 60" stroke="var(--accent-2)" stroke-width="1.4"/><path d="M222 56l5 4-5 4" fill="none" stroke="var(--accent-2)" stroke-width="1.4"/>
-        <rect x="232" y="22" width="56" height="74" rx="6" fill="var(--bg)" stroke="#28333f"/>
-        <path d="M244 40h32M244 50h26M244 60h30M244 70h20" stroke="#28333f" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="282" cy="88" r="15" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.6"/>
-        <path d="M275 88l5 5 9-10" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="260" y="116" text-anchor="middle" class="art-label">signed evidence</text>`);
+        <circle r="2.8" fill="${cyan}" opacity="0">
+          <animateMotion dur="${D}s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;.4;.5;1" path="M192 60 L226 60"/>
+          ${anim('opacity', '0;0;1;1;0;0', '0;.39;.4;.49;.51;1', D)}
+        </circle>
+        <rect x="232" y="22" width="56" height="74" rx="6" fill="var(--bg)" stroke="var(--line-2)"/>
+        <path d="M244 40h32M244 50h26M244 60h30M244 70h20" stroke="var(--line-2)" stroke-width="3" stroke-linecap="round"/>
+        ${lines.map(([x, y, w], i) => `<path d="M${x} ${y}h${w}" stroke="${cyan}" stroke-opacity=".75" stroke-width="3" stroke-linecap="round" stroke-dasharray="${w}" stroke-dashoffset="${w}">
+          ${anim('stroke-dashoffset', `${w};${w};0;0;${w}`, `0;${f(.5 + i * .05)};${f(.58 + i * .05)};.94;1`, D)}</path>`).join('')}
+        <circle cx="282" cy="88" r="15" fill="var(--bg)" stroke="var(--ok)" stroke-width="1.6">${anim('r', '15;15;18.5;15;15', '0;.76;.81;.87;1', D)}</circle>
+        <path d="M275 88l5 5 9-10" fill="none" stroke="var(--ok)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="22" stroke-dashoffset="22">
+          ${anim('stroke-dashoffset', '22;22;0;0;22', '0;.76;.84;.95;1', D)}</path>
+        <text x="260" y="116" text-anchor="middle" class="art-label">signed evidence</text>`, 3.6);
     }
+
+    /* Password meter: characters type in, bars fill, the verdict climbs from weak to strong. */
     if (type === 'meter') {
-      const segs = [['var(--bad)', 1], ['#ff8f6b', 1], ['var(--warn)', 1], ['var(--accent)', 1], ['var(--accent)', .25]];
+      const D = 5;
+      const N = 13, t0 = .06, dt = .034;                   // one dot every ~0.17s
+      const tk = k => f(t0 + k * dt), end = f(t0 + N * dt);
+      const segs = [['var(--bad)', 1], ['#fb923c', 3], ['var(--warn)', 6], ['var(--ok)', 9], ['var(--ok)', 12]];
+      const phases = [                                      // [label, colour, entropy, crack time, from, to]
+        ['weak', 'var(--bad)', '18 bits', 'seconds', 0, tk(4)],
+        ['fair', 'var(--warn)', '46 bits', 'months', tk(4), tk(9)],
+        ['strong', 'var(--ok)', '72 bits', 'centuries', tk(9), 1],
+      ];
+      const win = (from, to) => from === 0
+        ? anim('opacity', '1;1;0;0', `0;${f(to - .005)};${to};1`, D)
+        : anim('opacity', `0;0;1;1;0;0`, `0;${f(from - .005)};${from};${to === 1 ? .93 : f(to - .005)};${to === 1 ? .97 : to};1`, D);
       return frame(`
-        <rect x="24" y="18" width="272" height="34" rx="8" fill="var(--bg)" stroke="#28333f"/>
-        ${glyph('lock', 44, 35, 16, '#8693a1')}
-        <text x="62" y="40" class="art-pw">•••••••••••••</text><rect x="196" y="27" width="1.5" height="16" fill="var(--accent)" class="blink"/>
-        ${segs.map(([c, o], i) => `<rect x="${24 + i * 55}" y="64" width="50" height="7" rx="3.5" fill="${c}" opacity="${o}" class="seg" style="animation-delay:${i * .15}s"/>`).join('')}
-        <text x="24" y="96" class="art-label" text-anchor="start">strength</text><text x="296" y="96" class="art-label" text-anchor="end" fill="var(--accent)">strong</text>
-        <text x="24" y="114" class="art-mono">entropy 72 bits</text><text x="296" y="114" class="art-mono" text-anchor="end">offline GPU: centuries</text>`);
+        <rect x="24" y="18" width="272" height="34" rx="8" fill="var(--bg)" stroke="var(--line-2)"/>
+        ${glyph('lock', 44, 35, 16, 'var(--muted)')}
+        ${Array.from({ length: N }, (_, k) => `<circle cx="${f(66 + k * 10.4)}" cy="35" r="2.7" fill="var(--soft)" opacity="0">${anim('opacity', '0;0;1;1;0;0', `0;${f(tk(k) - .002)};${tk(k)};.93;.96;1`, D)}</circle>`).join('')}
+        <rect x="62" y="27" width="1.5" height="16" fill="var(--accent)">${anim('x', `62;${f(62 + N * 10.4)};${f(62 + N * 10.4)};62`, `0;${end};.96;1`, D)}${anim('opacity', '1;0;1;0;1;0;1;0;1', '0;.12;.24;.36;.48;.6;.72;.84;1', D, ' calcMode="discrete"')}</rect>
+        <rect x="24" y="64" width="270" height="7" rx="3.5" fill="var(--line)"/>
+        ${segs.map(([c, at], i) => `<rect x="${24 + i * 55}" y="64" width="50" height="7" rx="3.5" fill="${c}" opacity="0">${anim('opacity', '0;0;1;1;0;0', `0;${f(tk(at) - .002)};${tk(at)};.93;.96;1`, D)}</rect>`).join('')}
+        <text x="24" y="96" class="art-label" text-anchor="start">strength</text>
+        ${phases.map(([label, col, bits, crack, from, to]) => `
+          <g opacity="${from === 0 ? 1 : 0}">${win(from, to)}
+            <text x="296" y="96" class="art-label" text-anchor="end" fill="${col}">${label}</text>
+            <text x="24" y="114" class="art-mono">entropy ${bits}</text>
+            <text x="296" y="114" class="art-mono" text-anchor="end">offline GPU: ${crack}</text>
+          </g>`).join('')}`, 4.5);
     }
     return '';
   };
@@ -157,7 +216,7 @@ window.GFX = (() => {
   const lum = hex => { const n = parseInt(hex, 16); const [r, g, b] = [n >> 16 & 255, n >> 8 & 255, n & 255].map(v => v / 255); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
   const toolTile = t => {
     const L = t.logo && window.LOGOS && window.LOGOS[t.logo];
-    const color = L ? (lum(L.hex) < 0.3 ? '#c3ccd6' : '#' + L.hex) : null;
+    const color = L ? (lum(L.hex) < 0.3 ? 'var(--soft)' : '#' + L.hex) : null;
     const mark = L
       ? `<svg viewBox="0 0 24 24" aria-hidden="true" style="--brand:${color}"><path d="${L.path}"/></svg>`
       : `<span class="tool-mono">${esc(t.mono || t.name.slice(0, 2).toUpperCase())}</span>`;
