@@ -69,7 +69,7 @@
   /* ── sections ──────────────────────────────── */
   const stats = `
     <div class="stats"><div class="wrap">
-      ${D.stats.map(s => `<div class="stat"><div class="n" data-count="${+s.value}">${+s.value}${s.suffix ? `<sup>${esc(s.suffix)}</sup>` : ''}</div><div class="t">${esc(s.label)}</div></div>`).join('')}
+      ${D.stats.map(s => `<div class="stat reveal"><div class="n">${+s.value}${s.suffix ? `<sup>${esc(s.suffix)}</sup>` : ''}</div><div class="t">${esc(s.label)}</div></div>`).join('')}
     </div></div>`;
 
   const F = D.focus;
@@ -186,7 +186,7 @@
               </div>`).join('')}
           </div>
         </div>` : ''}
-      <div class="more reveal"><a class="btn" href="${esc(P.github)}" ${ext}>All code on GitHub ↗</a></div>
+      <div class="more reveal"><a class="btn" href="${esc(P.github)}" ${ext}>Explore public projects on GitHub ↗</a></div>
     </div></section>`;
 
   const skills = `

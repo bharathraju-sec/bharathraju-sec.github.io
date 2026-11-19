@@ -113,24 +113,8 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.1});
   $$('.reveal').forEach(el => io.observe(el));
 
-  // counters: the HTML already holds the real value; this only replays it as a count-up.
-  // Progress is clamped to [0,1] (rAF timestamps can precede t0) and always ends on the exact target.
-  const cio = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return; cio.unobserve(e.target);
-    const el = e.target, end = Math.max(0, +el.dataset.count || 0);
-    const set = v => { el.firstChild.nodeValue = String(v); };
-    if (reduce || !end) return set(end);
-    const t0 = performance.now(), dur = 1300;
-    const tick = t => {
-      const p = Math.min(1, Math.max(0, (t - t0) / dur));
-      const from = Math.round(end * .65);   // never drops to 0, even mid-animation
-      set(Math.max(from, Math.min(end, Math.round(from + (end - from) * (1 - Math.pow(1 - p, 3))))));
-      if (p < 1) requestAnimationFrame(tick); else set(end);
-    };
-    requestAnimationFrame(tick);
-    setTimeout(() => set(end), dur + 600);   // safety net after a paused/background tab
-  }), {threshold:.6});
-  $$('[data-count]').forEach(el => cio.observe(el));
+  // stats: the real figures stay in the DOM at all times; the cards fade in via .reveal
+  // (no count-up, so screen readers, crawlers and scrapers never see an intermediate number).
 
   // terminal typing
   // lines come from js/data.js → terminal: [{ cmd, out, warn }]
