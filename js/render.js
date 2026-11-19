@@ -47,7 +47,7 @@
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
 
   /* ── nav ───────────────────────────────────── */
-  const NAV = [['focus', 'Focus'], ['about', 'About'], ['experience', 'Experience'], ['projects', 'Projects'], ['skills', 'Skills'], ['credentials', 'Credentials'], ['contact', 'Contact']];
+  const NAV = [['about', 'About'], ['experience', 'Experience'], ['projects', 'Projects'], ['skills', 'Skills'], ['contact', 'Contact']];
   set('brand', `<span class="dot"></span>${esc(P.terminalUser)}`);
   set('links', NAV.map(([id, t]) => `<a href="#${id}">${t}</a>`).join(''));
   set('sheetLinks', NAV.map(([id, t]) => `<a href="#${id}">${t}</a>`).join(''));
@@ -61,7 +61,6 @@
     <p class="tagline">${esc(P.tagline)}${P.taglineStrong ? ` <b>${esc(P.taglineStrong)}</b>` : ''}</p>
     <div class="cta">
       <a href="#projects" class="btn primary">View my work →</a>
-      <a href="${esc(P.resume)}" class="btn" download>Download résumé</a>
       <a href="#contact" class="btn">Get in touch</a>
     </div>`);
   const GFX = window.GFX || {};

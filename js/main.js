@@ -123,7 +123,8 @@
     const t0 = performance.now(), dur = 1300;
     const tick = t => {
       const p = Math.min(1, Math.max(0, (t - t0) / dur));
-      set(Math.max(0, Math.min(end, Math.round(end * (1 - Math.pow(1 - p, 3))))));
+      const from = Math.round(end * .65);   // never drops to 0, even mid-animation
+      set(Math.max(from, Math.min(end, Math.round(from + (end - from) * (1 - Math.pow(1 - p, 3))))));
       if (p < 1) requestAnimationFrame(tick); else set(end);
     };
     requestAnimationFrame(tick);

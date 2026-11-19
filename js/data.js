@@ -101,10 +101,9 @@ window.PORTFOLIO = {
   about: {
     title: "Hands-on with the network.", titleEm: "Focused on security.",
     paragraphs: [
-      "I am a **cybersecurity postgraduate from Macquarie University** and Computer Science graduate with over three years of professional experience in enterprise network engineering and security across Australia and India.",
-      "Currently working as a Field Network Engineer at ENbridge IT Services, I have delivered 20+ enterprise infrastructure assignments involving SD-WAN migrations, network deployments, connectivity troubleshooting and secure infrastructure decommissioning across banking, government, retail and corporate environments.",
-      "My previous experience includes maintaining business-critical network and server infrastructure supporting approximately 100 employees, 150 computers and eight Windows Servers. Beyond enterprise networking, my technical interests include penetration testing, incident response, threat intelligence, security architecture and agentic AI security. My work includes **AgentOne**, an academic AI security research prototype, and independent security product initiatives such as **EdgeClosure** and **DeceptID**.",
-      "Having started my career in customer-facing sales before moving into technology, I combine technical expertise with **commercial awareness, client relationship management, team collaboration and independent project delivery**. My objective is to develop practical, evidence-based security solutions that strengthen enterprise infrastructure and address emerging cybersecurity challenges.",
+      "I'm a **cybersecurity postgraduate from Macquarie University** with over three years of professional experience in enterprise network engineering across Australia and India.",
+      "Currently a Field Network Engineer at ENbridge IT Services, I've delivered 20+ enterprise infrastructure assignments involving SD-WAN, network deployments and secure infrastructure operations.",
+      "My technical focus spans **network security, incident response, threat intelligence and agentic AI security**, combining hands-on engineering experience with security research, commercial awareness and independent project development.",
     ],
   },
 
