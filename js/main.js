@@ -290,7 +290,26 @@
     }
   };
   const inMargin = x => side >= 90 && (x < side || x > W - side);
-  const EMPTY = 'body, main, section, .hero, .hero .wrap, .hero canvas, header, .wrap, footer, .projects, .earlier, .earlier-grid, .skill-grid, .cred-grid, .timeline, .about-grid, .focus, .stats, .stats .wrap, .stat, .sec-head, .sec-head .label, .sec-head h2, .sec-head h2 em, .sec-head .lede';
+  // Open space = anything not inside a panel (an element with its own background or border) or a control.
+  // Text, headings and layout wrappers count as open space, so the mesh shows behind them too.
+  const CONTROL = 'a, button, input, textarea, select, label, img, video, iframe, nav, .nav, .sheet, .boot, .chip, .tag';
+  const panelCache = new WeakMap();
+  const isPanel = el => {
+    if (panelCache.has(el)) return panelCache.get(el);
+    const s = getComputedStyle(el);
+    const bg = s.backgroundColor, has = (bg && bg !== 'transparent' && !/rgba\([^)]*,\s*0\)$/.test(bg))
+      || s.backgroundImage !== 'none' || parseFloat(s.borderTopWidth) > 0 || parseFloat(s.borderLeftWidth) > 0;
+    panelCache.set(el, has); return has;
+  };
+  const isOpen = el => {
+    if (!el || el.closest?.(CONTROL)) return false;
+    for (let n = el; n && n !== document.body && n !== document.documentElement; n = n.parentElement) {
+      if (n.matches('section, main, header, footer')) return true;
+      if (n instanceof SVGElement) return false;
+      if (isPanel(n)) return false;
+    }
+    return true;
+  };
   let over = false;
   const draw = t => {
     ctx.clearRect(0, 0, W, H);
@@ -338,7 +357,7 @@
   };
   build();
   addEventListener('resize', build);
-  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; over = inMargin(mx) || !!e.target.matches?.(EMPTY); if (!raf) raf = requestAnimationFrame(loop); }, { passive: true });
+  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; over = inMargin(mx) || isOpen(e.target); if (!raf) raf = requestAnimationFrame(loop); }, { passive: true });
   document.addEventListener('pointerleave', () => { mx = my = -1e4; over = false; });
   raf = requestAnimationFrame(loop);
 })();
