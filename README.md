@@ -1,6 +1,6 @@
 # Bharath Raju Subramani — Portfolio
 
-Personal portfolio for Bharath Raju Subramani — Cybersecurity, Network Engineering and AI Security, Sydney NSW.
+Personal portfolio for Bharath Raju Subramani — Cybersecurity Engineering, Network Security and Infrastructure & AI Security, Sydney NSW.
 
 **Live site:** https://bharathraju.vercel.app/
 
@@ -27,7 +27,7 @@ Diagrams, network maps and dashboards on the site are illustrative graphics, not
 | `js/render.js` | Builds every section of the page from `data.js` |
 | `js/graphics.js` | SVG illustrations: hero network map, career path, project art, tool tiles |
 | `js/logos.js` | Tool logos (shape data from [Simple Icons](https://simpleicons.org), CC0) |
-| `js/main.js` | Interactions: nav, scroll reveal, counters, terminal typing, name "decrypt", network background with blocked threats |
+| `js/main.js` | Interactions: nav, scroll reveal, static stat cards (no count-up), terminal typing, name "decrypt", network background with blocked threats |
 | `css/style.css` | All styles |
 | `index.html` | Page shell, SEO tags and script loading |
 | `resume.pdf` | Résumé served by the "Download résumé" buttons |

@@ -19,9 +19,9 @@ window.PORTFOLIO = {
     firstLine: "Bharath Raju",
     secondLine: "Subramani",
     fullName: "Bharath Raju Subramani",
-    roles: ["Cybersecurity", "Network Engineering", "AI Security"],
+    roles: ["Cybersecurity Engineering", "Network Security", "Infrastructure & AI Security"],
     status: "Sydney, NSW, Australia · Open to security roles",   // set to "" to hide the badge
-    tagline: "From routers to AI agents — combining over three years of enterprise network engineering experience with cybersecurity, incident response and emerging AI security research.",
+    tagline: "From enterprise networks to AI systems — combining over three years of hands-on network engineering experience with security architecture, secure infrastructure deployment, technical security testing and agentic AI security research.",
     taglineStrong: "",
     location: "Sydney, NSW, Australia",
     email: "bharathrarazu14396@gmail.com",
@@ -35,7 +35,7 @@ window.PORTFOLIO = {
   terminal: [
     { cmd: "whoami",          out: "Bharath Raju Subramani" },
     { cmd: "cat role.txt",    out: "Field Network Engineer @ ENbridge IT\nM.IT Cyber Security — Macquarie Uni" },
-    { cmd: "ls focus/",       out: "network-security/   incident-response/\nthreat-intel/       agentic-ai-security/" },
+    { cmd: "ls focus/",       out: "network-security/          security-engineering/\nvulnerability-assessment/  agentic-ai-security/" },
     { cmd: "cat certs.txt",   out: "CEH · CCNA · Google Cybersecurity", warn: true },
     { cmd: "cat stack.txt",   out: "Cisco · Aruba · VeloCloud · Kali · Python" },
     { cmd: "echo $LOCATION",  out: "Sydney, NSW" },
@@ -48,7 +48,7 @@ window.PORTFOLIO = {
     { year: "2021–2024", title: "Network Engineer",       org: "VNews24 Kannada",         icon: "router" },
     { year: "2025–2026", title: "M.IT Cyber Security",    org: "Macquarie University",    icon: "cap" },
     { year: "2026–now",  title: "Field Network Engineer", org: "ENbridge IT Services",    icon: "field", current: true },
-    { year: "Interest",  title: "Security roles",         org: "SOC · NetSec · AI security", icon: "target", next: true },
+    { year: "Interest",  title: "Security roles",         org: "NetSec · Security engineering · AI security", icon: "target", next: true },
   ],
 
   /* ── Logo wall in the Skills section. logo = a key in js/logos.js (leave out for a text tile) ── */
@@ -71,7 +71,7 @@ window.PORTFOLIO = {
     { name: "SQL", mono: "SQ" },
   ],
 
-  /* ── Stats row (shows final values; counts up when scrolled into view) ── */
+  /* ── Stats row (static values; cards fade in, numbers never animate) ── */
   stats: [
     { value: 3,   suffix: "+", label: "Years of professional experience" },
     { value: 20,  suffix: "+", label: "Enterprise assignments delivered" },
@@ -83,17 +83,17 @@ window.PORTFOLIO = {
   focus: {
     label: "What I do",
     title: "Three areas,", titleEm: "one goal",
-    lede: "Keep the network trustworthy — whether the threat is a misconfigured edge router, a compromised account or a manipulated AI agent.",
+    lede: "Secure the infrastructure, validate security controls and defend emerging AI-enabled systems.",
     items: [
       { icon: "network", title: "Enterprise Network Security",
         text: "Secure infrastructure deployment, SD-WAN, firewall administration, network segmentation, network troubleshooting and secure decommissioning.",
         proof: "**20+** infrastructure assignments across banking, government, retail and corporate environments" },
-      { icon: "search", title: "Incident Response & Threat Intelligence",
-        text: "Evidence-based incident investigation, log analysis, adversary behaviour analysis, security monitoring and coordinated incident response.",
-        proof: "Academic work aligned with **MITRE ATT&CK** and **NIST SP 800-61**" },
-      { icon: "shieldCheck", title: "Agentic AI Security",
-        text: "Security controls for LLM-powered agents, including policy enforcement, tool authorisation and safeguards against indirect prompt injection.",
-        proof: "**AgentOne** · Macquarie University major project" },
+      { icon: "search", title: "Security Engineering & Testing",
+        text: "Security architecture, vulnerability assessment, penetration testing, security control validation and technical problem-solving, supported by hands-on academic security testing and independent architecture work.",
+        proof: "**EdgeClosure** · network security planning & architecture; vulnerability assessment and penetration testing coursework" },
+      { icon: "shieldCheck", title: "Agentic AI & Identity Security",
+        text: "Exploring security safeguards for LLM-powered agents and identity systems, including tool authorisation, prompt injection, deterministic access decisions and presentation attack detection research.",
+        proof: "**AgentOne** · academic prototype; **DeceptID** · early development (PAD is planned, not yet demonstrated)" },
     ],
   },
 
@@ -101,9 +101,9 @@ window.PORTFOLIO = {
   about: {
     title: "Hands-on with the network.", titleEm: "Focused on security.",
     paragraphs: [
-      "I'm a **cybersecurity postgraduate from Macquarie University** with over three years of professional experience in enterprise network engineering across Australia and India.",
+      "I'm a **cybersecurity postgraduate from Macquarie University** with over three years of professional experience in enterprise network engineering and security across Australia and India.",
       "Currently a Field Network Engineer at ENbridge IT Services, I've delivered 20+ enterprise infrastructure assignments involving SD-WAN, network deployments and secure infrastructure operations.",
-      "My technical focus spans **network security, incident response, threat intelligence and agentic AI security**, combining hands-on engineering experience with security research, commercial awareness and independent project development.",
+      "My technical focus is **network security, security architecture, vulnerability assessment, penetration testing and agentic AI security**, combining hands-on engineering experience with security research and independent product development.",
     ],
   },
 
@@ -143,6 +143,29 @@ window.PORTFOLIO = {
   projects: [
     {
       featured: true,
+      kind: "Network Security · Independent B2B product · 2026 –",
+      title: "EdgeClosure", badge: "Planning & architecture",
+      meta: "Evidence-based network security assessment · not yet implemented",
+      flow: ["Read-only collect", "Evaluate", "Track fix", "Verify closure"],
+      story: [
+        ["Problem", "Closing a remediation ticket doesn't prove the underlying issue has been resolved."],
+        ["Planned approach", "Authorised read-only evidence collection, vulnerability applicability analysis, deterministic decisions, cryptographically verifiable evidence and auditable closure."],
+        ["Current stage", "Architecture, security requirements, threat modelling and MVP planning — planned capabilities are not implemented features."],
+      ],
+      tags: ["*Network Security", "*Security Architecture", "Remediation Verification", "Cryptography", "Auditability"],
+      diagram: {
+        label: "Planned architecture: read-only evidence is collected and evaluated deterministically; a remediation closes only when fresh evidence verifies it, otherwise it stays open.",
+        steps: [
+          { text: "Authorised read-only collection", tag: "evidence" },
+          { text: "Deterministic security evaluation", tag: "decision" },
+          { text: "Re-check after remediation", tag: "verify", gate: true },
+        ],
+        allow: { text: "✓ Closure verified", tag: "signed evidence" },
+        block: { text: "✕ Issue persists", tag: "stays open" },
+        caption: "// planned architecture · not yet implemented",
+      },
+    },
+    {
       kind: "AI Security · Macquarie University major project · 2026",
       title: "AgentOne", badge: "Research prototype",
       meta: "Agentic AI Penetration Testing · collaborative academic research prototype",
@@ -152,44 +175,8 @@ window.PORTFOLIO = {
         ["Documented results", "Two demonstrations: a baseline run, and an adversarial run where the unauthorised action was blocked but the legitimate summary task failed."],
         ["Limitations", "A research prototype — not a comprehensive prompt-injection defence, production-ready or statistically validated."],
       ],
+      flow: ["Untrusted input", "Agent planner", "Policy + tool gate", "Allow / deny"],
       tags: ["*Agentic AI Security", "*Prompt Injection", "*Tool Authorisation", "LLM Security", "Policy Enforcement", "Python"],
-      diagram: {
-        label: "Conceptual diagram: untrusted content enters the agent; a policy and tool-authorisation gate allows authorised actions and denies unauthorised ones.",
-        steps: [
-          { text: "Untrusted email / documents", tag: "input" },
-          { text: "LLM agent / planner", tag: "agent" },
-          { text: "Policy + tool authorisation", tag: "guardrail", gate: true },
-        ],
-        allow: { text: "✓ Authorised action", tag: "allow" },
-        block: { text: "✕ Unauthorised action", tag: "deny" },
-        caption: "// conceptual flow · tool calls are checked against policy before they run",
-      },
-    },
-    {
-      kind: "DFIR · Simulated academic investigation · 2026",
-      title: "Cyber Incident Investigation & Response", badge: "Academic case study",
-      meta: "Macquarie University · simulated scenario, not a real client engagement",
-      art: "chain",
-      flow: ["Infostealer", "Stolen creds", "Account takeover", "Contain & recover"],
-      story: [
-        ["What I did", "Investigated a simulated infostealer-driven account takeover, using authentication logs and audit records to reconstruct attacker activity."],
-        ["Finding", "Audit records showed 412 export calls — potential exposure of approximately 41,200 candidate profiles."],
-        ["Deliverable", "An incident response plan covering containment, recovery, evidence preservation, coordination and Australian regulatory obligations."],
-      ],
-      tags: ["*Incident Response", "Log Analysis", "Threat Intelligence", "MITRE ATT&CK", "NIST SP 800-61"],
-    },
-    {
-      kind: "Network Security · Independent B2B product · 2026 –",
-      title: "EdgeClosure", badge: "Planning & architecture",
-      meta: "Evidence-based network security assessment · not yet implemented",
-      art: "verify",
-      flow: ["Read-only collect", "Evaluate", "Track fix", "Verify closure"],
-      story: [
-        ["Problem", "Closing a remediation ticket doesn't prove the underlying issue has been resolved."],
-        ["Planned approach", "Authorised read-only evidence collection, vulnerability applicability analysis, deterministic decisions, cryptographically verifiable evidence and auditable closure."],
-        ["Current stage", "Architecture, security requirements, threat modelling and MVP planning — planned capabilities are not implemented features."],
-      ],
-      tags: ["*Network Security", "Security Architecture", "Remediation Verification", "Cryptography", "Auditability"],
     },
     {
       kind: "Identity Security · Independent collaborative project · 2026 –",
@@ -204,6 +191,19 @@ window.PORTFOLIO = {
       ],
       tags: ["*Identity Security", "Security Architecture", "Computer Vision", "Authentication", "AI Security", "PAD"],
     },
+    {
+      kind: "DFIR · Simulated academic investigation · 2026",
+      title: "Cyber Incident Investigation & Response", badge: "Academic case study",
+      meta: "Macquarie University · simulated scenario, not a real client engagement",
+      art: "chain",
+      flow: ["Infostealer", "Stolen creds", "Account takeover", "Contain & recover"],
+      story: [
+        ["What I did", "Investigated a simulated infostealer-driven account takeover, using authentication logs and audit records to reconstruct attacker activity."],
+        ["Finding", "Audit records showed 412 export calls — potential exposure of approximately 41,200 candidate profiles."],
+        ["Deliverable", "An incident response plan covering containment, recovery, evidence preservation, coordination and Australian regulatory obligations."],
+      ],
+      tags: ["*Incident Response", "Log Analysis", "Threat Intelligence", "MITRE ATT&CK", "NIST SP 800-61"],
+    },
   ],
 
   /* ── Earlier and other software projects ── */
@@ -217,24 +217,24 @@ window.PORTFOLIO = {
       text: "Machine learning project classifying emotion from speech audio using MFCC and spectral feature extraction, a deep-learning classifier and a Flask-based interface.",
       tags: ["Python", "Librosa", "Deep learning", "Flask"] },
     { icon: "pin", title: "Smart Campus Navigation", art: "campus",
-      text: "Mobile campus navigation app helping users locate buildings and facilities through GPS location services, map search and campus routing, with a Firebase backend.",
-      tags: ["Mobile", "Google Maps API", "GPS", "Firebase"],
+      text: "GPS-based campus navigation app using Leaflet and OpenStreetMap, Firebase Realtime Database and shortest-path routing. The hybrid Cordova/PWA implementation includes campus search and offline-aware data handling.",
+      tags: ["JavaScript", "Cordova", "Leaflet", "OpenStreetMap", "Firebase", "GPS", "Dijkstra"],
       link: [{ url: "https://github.com/bharathraju-sec/smart-campus-navigation", text: "View source on GitHub ↗" }] },
     { icon: "face", title: "Face Recognition with SVM", art: "faces",
-      text: "B.Tech final-year project: a webcam face recognition system that enrols people, trains an SVM classifier on 128-dimensional face encodings with a train/test evaluation, and labels new captures as known or unknown. Academic code, no face data published.",
+      text: "B.Tech final-year academic project: webcam-based face enrolment, 128-dimensional face encodings and SVM training/evaluation, with known/unknown recognition from face encodings. Learning code without liveness detection; no face data or benchmark results published.",
       tags: ["Python", "OpenCV", "face_recognition", "scikit-learn", "SVM"],
       link: { url: "https://github.com/bharathraju-sec/face-recognition-svm", text: "View source on GitHub ↗" } },
   ],
 
   /* ── Skills ("*" = core) ──────────────────────── */
   skills: [
-    { icon: "network",  name: "Networking",          tags: ["*SD-WAN", "*Routing & Switching", "*LAN/WAN", "*Network Troubleshooting", "TCP/IP", "VLANs", "Subnetting", "DNS", "DHCP", "VPNs", "Load Balancing"] },
-    { icon: "terminal", name: "Enterprise tech",     tags: ["*Cisco ISR", "*Cisco Firewalls", "*HPE Aruba EdgeConnect", "*VMware VeloCloud", "Cisco Switches", "Windows Server"] },
     { icon: "shield",   name: "Network security",    tags: ["*Firewall Administration", "*Secure Device Decommissioning", "Access Control", "Network Segmentation", "Security Patching"] },
-    { icon: "alert",    name: "Cybersecurity",       tags: ["*Incident Response", "*Vulnerability Assessment", "Penetration Testing", "Threat Modelling", "Risk Assessment", "Cryptography", "Security Architecture"] },
-    { icon: "search",   name: "Security operations", tags: ["*Log Analysis", "*MITRE ATT&CK", "Threat Intelligence", "Security Monitoring", "SIEM Fundamentals", "NIST CSF 2.0", "NIST SP 800-61"] },
-    { icon: "chip",     name: "AI security",         tags: ["*Agentic AI Security", "*Prompt Injection", "*Tool Authorisation", "LLM Security", "Security Guardrails"] },
-    { icon: "tool",     name: "Tools & platforms",   tags: ["*Wireshark", "*Kali Linux", "*Python", "*Linux", "Nessus", "Nmap", "Burp Suite", "Metasploit", "SQL", "Git", "Docker", "VMware", "PostgreSQL", "REST APIs"] },
+    { icon: "terminal", name: "Enterprise technologies", tags: ["*Cisco Firewalls", "*Cisco ISR", "*HPE Aruba EdgeConnect", "*VMware VeloCloud", "Cisco Switches", "Windows Server"] },
+    { icon: "network",  name: "Networking",          tags: ["*SD-WAN", "*Routing & Switching", "*Network Troubleshooting", "TCP/IP", "*LAN/WAN", "VLANs", "Subnetting", "DNS", "DHCP", "VPNs", "Load Balancing"] },
+    { icon: "alert",    name: "Security engineering & testing", tags: ["*Security Architecture", "*Vulnerability Assessment", "Penetration Testing", "Threat Modelling", "Cryptography", "*Kali Linux", "*Wireshark", "Nessus", "Nmap", "Burp Suite", "Metasploit"] },
+    { icon: "tool",     name: "Programming & platforms", tags: ["*Python", "SQL", "*Linux", "Git", "Docker", "VMware", "PostgreSQL", "REST APIs"] },
+    { icon: "chip",     name: "AI security",         tags: ["*Agentic AI Security", "LLM Security", "*Prompt Injection", "*Tool Authorisation", "Security Guardrails"] },
+    { icon: "search",   name: "Security operations & frameworks", tags: ["*Incident Response", "Threat Intelligence", "*Log Analysis", "Security Monitoring", "SIEM Fundamentals", "Risk Assessment", "*MITRE ATT&CK", "NIST CSF 2.0", "NIST SP 800-61"] },
     { icon: "people",   name: "Professional",        tags: ["Team Collaboration", "Project Delivery", "Client Relationship Management", "Stakeholder Communication", "Risk Awareness", "Issue Escalation", "Problem-Solving", "Technical Documentation"] },
   ],
 
@@ -258,7 +258,7 @@ window.PORTFOLIO = {
 
   /* ── Contact ──────────────────────────────────── */
   contact: {
-    lede: "Hiring for a security, SOC or network security role in Australia — or want to talk agentic AI security? My inbox is open.",
+    lede: "Hiring for network security, cybersecurity engineering or security infrastructure roles in Australia — or interested in technical AI security research? My inbox is open.",
     subject: "Hello Bharath — via your portfolio",   // pre-filled subject for Send email
   },
 };

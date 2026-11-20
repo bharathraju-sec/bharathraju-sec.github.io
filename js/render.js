@@ -176,7 +176,7 @@
   };
   const projects = `
     <section id="projects"><div class="wrap">
-      ${head('Selected work', 'Security', 'projects', 'Research and builds across agentic AI security, incident response and network assurance.')}
+      ${head('Selected work', 'Security', 'projects', 'Technical security architecture, validation, AI security research and practical cybersecurity investigations.')}
       <div class="projects">${D.projects.map(project).join('')}</div>
       ${D.earlierProjects?.length ? `
         <div class="earlier reveal">
