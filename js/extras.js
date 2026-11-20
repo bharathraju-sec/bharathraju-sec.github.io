@@ -94,4 +94,9 @@
     addEventListener('scroll', upd, { passive: true }); upd();
   })();
 
+  // No right-click menu on the page (text fields keep theirs for paste/spellcheck)
+  addEventListener('contextmenu', e => {
+    if (!e.target.closest?.('input, textarea, [contenteditable="true"]')) e.preventDefault();
+  });
+
 })();
