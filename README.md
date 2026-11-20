@@ -2,7 +2,7 @@
 
 Personal portfolio for Bharath Raju Subramani — Cybersecurity Engineering, Network Security and Infrastructure & AI Security, Sydney NSW.
 
-**Live site:** https://bharathraju.vercel.app/
+**Live site:** https://bharathraju.is-a.dev/ (also served at https://bharathraju.vercel.app/)
 
 A single static page built with plain JavaScript — no framework, no build step.
 
@@ -47,7 +47,7 @@ Then open http://localhost:5173.
 
 1. Import this repository in Vercel.
 2. Framework preset: **Other**. Leave the build command empty and the output directory as the root.
-3. The production URL is `https://bharathraju.vercel.app/`. The `canonical` link and Open Graph tags in `index.html` already point to it, and `og:image` uses `portfolio-featured.png`.
+3. The production URL is `https://bharathraju.is-a.dev/` (free is-a.dev subdomain pointing at Vercel; `https://bharathraju.vercel.app/` stays live as a fallback). The `canonical` link and Open Graph tags in `index.html` already point to it, and `og:image` uses `portfolio-featured.png`.
 
 ## Updating
 
