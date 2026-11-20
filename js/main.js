@@ -290,7 +290,7 @@
     }
   };
   const inMargin = x => side >= 90 && (x < side || x > W - side);
-  const EMPTY = 'body, main, section, .hero, .hero .wrap, .hero canvas, header, .wrap, footer, .projects, .earlier, .earlier-grid, .skill-grid, .cred-grid, .timeline, .about-grid, .focus, .stats, .stats .wrap, .stat';
+  const EMPTY = 'body, main, section, .hero, .hero .wrap, .hero canvas, header, .wrap, footer, .projects, .earlier, .earlier-grid, .skill-grid, .cred-grid, .timeline, .about-grid, .focus, .stats, .stats .wrap, .stat, .sec-head, .sec-head .label, .sec-head h2, .sec-head h2 em, .sec-head .lede';
   let over = false;
   const draw = t => {
     ctx.clearRect(0, 0, W, H);
