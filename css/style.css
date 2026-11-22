@@ -591,3 +591,23 @@ h2.typed.typing::after{animation:caretShow 0s calc(var(--chars) * 45ms) forwards
 #heroMap{aspect-ratio:480/400}
 #heroMap>svg{display:block;width:100%;height:100%}
 .boot-lines{min-height:130px}
+
+/* ===== Mobile: compact project + experience cards ===== */
+@media (max-width:760px){
+  .proj,.proj.featured{padding:18px 16px}
+  .proj .proj-art,.proj .mini-flow,.proj .flow,.proj .num{display:none}
+  .proj h3{font-size:19px;margin:4px 0 4px}
+  .proj .meta{font-size:13.5px;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .proj .case{font-size:14px}
+  .proj .case-more{display:none}
+  .proj .chips span:nth-child(n+4),.job .chips span:nth-child(n+4),.mini .chips span:nth-child(n+4){display:none}
+  .mini .proj-art,.mini svg.art{display:none}
+  .mini{padding:14px}
+  .mini p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13.5px}
+  .job{padding:16px}
+  .job h3{font-size:18px}
+  .job .highlight{display:none}
+  .job ul li:nth-child(n+3){display:none}
+  .job ul{font-size:14px}
+  .job.compact p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+}
