@@ -100,3 +100,21 @@
   });
 
 })();
+
+/* ── Mobile sticky "Send email" bar (hidden while the contact section is on screen) ── */
+(() => {
+  const P = (window.PORTFOLIO || {}).person || {};
+  const D = window.PORTFOLIO || {};
+  if (!P.email) return;
+  const a = document.createElement('a');
+  a.className = 'mobile-cta';
+  a.href = `mailto:${P.email}?subject=${encodeURIComponent(D.contact?.subject || '')}`;
+  a.textContent = 'Send email';
+  document.body.appendChild(a);
+  const contact = document.getElementById('contact');
+  if (!contact || !('IntersectionObserver' in window)) { a.classList.add('show'); return; }
+  let inContact = false, pastHero = false;
+  const upd = () => a.classList.toggle('show', pastHero && !inContact);
+  new IntersectionObserver(es => { es.forEach(e => { inContact = e.isIntersecting; }); upd(); }, { threshold: 0.1 }).observe(contact);
+  addEventListener('scroll', () => { pastHero = scrollY > innerHeight * 0.8; upd(); }, { passive: true });
+})();
